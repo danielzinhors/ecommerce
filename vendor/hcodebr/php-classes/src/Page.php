@@ -9,6 +9,8 @@ class Page{
     private $tpl;
     private $options = [];
     private $defauts = [
+        "header" => true,
+        "footer" => true,
         "data" => []
     ];
 
@@ -17,12 +19,12 @@ class Page{
         $this->options = array_merge($this->defauts, $opts);
         // config
         $config = array(
-            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"] . 
-                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . $tpl_dir . 
+            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"] .
+                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . $tpl_dir .
                   DIRECTORY_SEPARATOR,
-            "cache_dir"     => $_SERVER["DOCUMENT_ROOT"] . 
-                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . "views-cache" . 
-                  DIRECTORY_SEPARATOR, 
+            "cache_dir"     => $_SERVER["DOCUMENT_ROOT"] .
+                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . "views-cache" .
+                  DIRECTORY_SEPARATOR,
             "debug"         => false // set to false to improve the speed
         );
 
@@ -32,25 +34,30 @@ class Page{
 
         $this->setData($this->options["data"]);
 
-        $this->tpl->draw("header");
+        if ($this->options["header"] === true){
+            $this->tpl->draw("header");
+        }
 
     }
 
     private function setData($data = array()){
-       
+
         foreach($data as $key => $value){
             $this->tpl->assign($key, $value);
         }
     }
 
     public function setTpl($name, $data = array(), $returnHTML = false){
-        
+
         $this->setData($data);
 
         return $this->tpl->draw($name, $returnHTML);
     }
 
     public function __destruct(){
-        $this->tpl->draw("footer");
+
+        if ($this->options["footer"] === true){
+          $this->tpl->draw("footer");
+        }
     }
 }
