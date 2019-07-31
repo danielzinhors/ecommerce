@@ -20,10 +20,10 @@ class Page{
         // config
         $config = array(
             "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"] .
-                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . $tpl_dir .
+                  DIRECTORY_SEPARATOR . $tpl_dir .
                   DIRECTORY_SEPARATOR,
             "cache_dir"     => $_SERVER["DOCUMENT_ROOT"] .
-                  DIRECTORY_SEPARATOR . "ecommerce" . DIRECTORY_SEPARATOR . "views-cache" .
+                  DIRECTORY_SEPARATOR . "views-cache" .
                   DIRECTORY_SEPARATOR,
             "debug"         => false // set to false to improve the speed
         );

@@ -1,6 +1,8 @@
 <?php
 
+session_start();
 require_once("vendor/autoload.php");
+require_once("functions.php");
 
 use \Slim\Slim;
 use \Hcode\Page;
@@ -19,31 +21,51 @@ $app->get('/', function() {
 
 });
 
-$app->get('/admin', function() {
-
+function acessarAdmin(){
+	User::verifyLogin();
 	$page = new PageAdmin();
 
 	$page->setTpl("index");
+}
 
+$app->get('/admin', function() {
+		acessarAdmin();
 });
-$app->get('/admin/login', function() {
 
+$app->get('/admin/', function() {
+		acessarAdmin();
+});
+
+function chamaLogin(){
 	$page = new PageAdmin(array(
     "header" => false,
     "footer" => false
   ));
 
 	$page->setTpl("login");
-
-});
+}
 
 $app->get('/admin/login', function() {
+	chamalogin();
+});
 
-	User::login($_POST["login"], $_POST["password"]);
+$app->get('/admin/login/', function() {
+	chamalogin();
+});
+
+$app->post('/admin/login', function() {
+
+	User::login($_POST["deslogin"], $_POST["despassword"]);
 
   header("Location: /admin");
   exit;
 
+});
+
+$app->get('/admin/logout', function(){
+	User::logout();
+	header("Location: /admin/login");
+	exit;
 });
 
 $app->run();
