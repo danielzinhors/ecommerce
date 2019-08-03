@@ -31,7 +31,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Conectar para uma nova sessão</p>
 
     <form action="/admin/login" method="post">
       <div class="form-group has-feedback">
@@ -46,13 +46,13 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox"> Lembrar me
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Conectar</button>
         </div>
         <!-- /.col -->
       </div>
@@ -68,8 +68,8 @@
     </div>
 
 -->
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+    <a href="/forgot">Esqueci minha senha</a><br>
+    <a href="register.html" class="text-center">Registrar um novo usuário</a>
 
   </div>
   <!-- /.login-box-body -->
