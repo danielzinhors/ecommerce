@@ -207,6 +207,17 @@ class User extends Model{
           			 } else {
           					$link = "http://www.bericomerce.com.br/forgot/reset?code=$code";
           			 }
+
+                 $emailConta = $sql->select(
+                       "SELECT b.*
+                       from tb_params_empresa a
+                       INNER JOIN tb_conta_email b USING(idcontaemail)
+                       WHERE a.idparamsempresa=:idparamsempresa",
+                       array(
+                         ":idparamsempresa" => 10
+                       )
+                 );
+                 //
                  $mailer = new Mailer(
                    $data["desemail"],
                    $data["desperson"],
@@ -215,6 +226,14 @@ class User extends Model{
                    array(
                      "name" => $data["desperson"],
                      "link" => $link
+                   ),
+                   array(
+                     "username" => $emailConta["desusername"],
+                     "senha" => $emailConta["dessenha"],
+                     "host" => $emailConta["desprovedor"],
+                     "porta" => $emailConta["nrporta"],
+                     "remetente" => 'BeriComerce',
+                     "assunto" => 'Recuperação de senha'
                    )
                  );
 

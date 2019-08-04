@@ -6,14 +6,9 @@ use Rain\Tpl;
 
 class Mailer{
 
-    const userName = 'danielsilveira.infobr@gmail.com';
-    const senha = 'infobr21100';
-    const remetente = 'BeriComerce';
-    const assunto = 'Recuperação de senha';
-
     private $email;
 
-    public function __construct($toAddress, $toName, $subject, $tplName, $data = array()){
+    public function __construct($toAddress, $toName, $subject, $tplName, $data = array(), $emailConta){
 
         $config = array(
             "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"] .
@@ -44,22 +39,22 @@ class Mailer{
         // 2 = client and server messages
           $this->email->SMTPDebug = 2;
         //Set the hostname of the mail server
-          $this->email->Host = 'smtp.gmail.com';
+          $this->email->Host = $emailConta["host"];
         // use
         // $this->email->Host = gethostbyname('smtp.gmail.com');
         // if your network does not support SMTP over IPv6
         //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-          $this->email->Port = 587;
+          $this->email->Port = $emailConta["porta"];
         //Set the encryption system to use - ssl (deprecated) or tls
           $this->email->SMTPSecure = 'tls';
         //Whether to use SMTP authentication
           $this->email->SMTPAuth = true;
         //Username to use for SMTP authentication - use full email address for gmail
-          $this->email->Username = Mailer::userName;
+          $this->email->Username = $emailConta["username"];
         //Password to use for SMTP authentication
-          $this->email->Password = Mailer::senha;
+          $this->email->Password = $emailConta["senha"];
         //Set who the message is to be sent from
-          $this->email->setFrom(Mailer::userName, Mailer::remetente);
+          $this->email->setFrom($emailConta["username"], $emailConta["remetente"]);
         //Set an alternative reply-to address
         //  $this->email->addReplyTo('replyto@example.com', 'First Last');
         //Set who the message is to be sent to
