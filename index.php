@@ -8,10 +8,21 @@ use \Slim\Slim;
 use \Hcode\Page;
 use \Hcode\PageAdmin;
 use \Hcode\Model\User;
+use \Hcode\Model\Category;
 
 $app = new Slim();
 
 $app->config('debug', true);
+
+function chamaTpl($view, $data = array(), $mostraHeader = true, $mostraFooter = true){
+
+	$page = new PageAdmin(array(
+    "header" => $mostraHeader,
+    "footer" => $mostraFooter
+  ));
+
+	$page->setTpl($view, $data);
+}
 
 $app->get('/', function() {
 
@@ -23,9 +34,7 @@ $app->get('/', function() {
 
 function acessarAdmin(){
 	User::verifyLogin();
-	$page = new PageAdmin();
-
-	$page->setTpl("index");
+	chamaTpl("index");
 }
 
 $app->get('/admin', function() {
@@ -36,21 +45,12 @@ $app->get('/admin/', function() {
 		acessarAdmin();
 });
 
-function chamaTpl($view, $data = array()){
-	$page = new PageAdmin(array(
-    "header" => false,
-    "footer" => false
-  ));
-
-	$page->setTpl($view, $data);
-}
-
 $app->get('/admin/login', function() {
-	chamaTpl("login");
+	chamaTpl("login", array(), false, false);
 });
 
 $app->get('/admin/login/', function() {
-	chamaTpl();
+	chamaTpl("login", array(), false, false);
 });
 
 $app->post('/admin/login', function() {
@@ -74,11 +74,12 @@ $app->get('/admin/users', function(){
 
 		$users = User::listAll();
 
-		$page = new PageAdmin();
-
-		$page->setTpl("users", array(
+		chamaTpl("users", array(
 			"users" => $users
-		));
+		),
+		true,
+		true
+	);
 
 });
 //criar usuario
@@ -86,9 +87,7 @@ $app->get('/admin/users/create', function(){
 
 		User::verifyLogin();
 
-		$page = new PageAdmin();
-
-		$page->setTpl("users-create");
+		chamaTpl("users-create");
 
 });
 //deletar tem que vir antes de outra rota que contenha o :iduser sem methodo
@@ -153,7 +152,7 @@ $app->post('/admin/users/:iduser', function($iduser){
 });
 
 $app->get('/forgot', function(){
-		chamaTpl("forgot");
+		chamaTpl("forgot", array(), false, false);
 });
 
 $app->post('/forgot', function(){
@@ -164,7 +163,7 @@ $app->post('/forgot', function(){
 });
 
 $app->get('/forgot/sent', function(){
-		chamaTpl("forgot-sent");
+		chamaTpl("forgot-sent", array(), false, false);
 });
 
 $app->get('/forgot/reset', function(){
@@ -172,9 +171,12 @@ $app->get('/forgot/reset', function(){
 		$user = User::validForgotDecrypt($_GET["code"]);
 
 		chamaTpl("forgot-reset", array(
-			"name" => $user["desperson"],
-			"code" => $_GET["code"]
-		));
+			  "name" => $user["desperson"],
+			  "code" => $_GET["code"]
+		  ),
+			false,
+			false
+		);
 });
 
 $app->post('/forgot/reset', function(){
@@ -188,8 +190,64 @@ $app->post('/forgot/reset', function(){
   $password = User::getPasswordHash($_POST["password"]);
 	$user->setPassword($password);
 
-	chamaTpl("forgot-reset-success");
+	chamaTpl("forgot-reset-success", array(), false, false);
 
+});
+
+$app->get('/admin/categories', function(){
+		User::verifyLogin();
+		$categories = Category::listAll();
+		chamaTpl('categories', array(
+			"categories" => $categories
+		  )
+		);
+});
+
+$app->get('/admin/categories/create', function(){
+		User::verifyLogin();
+		chamaTpl('categories-create');
+});
+
+$app->post('/admin/categories/create', function(){
+		User::verifyLogin();
+		$category = new Category();
+
+		$category->setData($_POST);
+
+		$category->save();
+
+		header("Location: /admin/categories");
+		exit;
+});
+
+$app->get('/admin/categories/:idcategory/delete', function($idcategory){
+	  User::verifyLogin();
+		$category = new Category();
+		$category->get((int)$idcategory);
+		$category->delete();
+		header("Location: /admin/categories");
+		exit;
+});
+
+$app->get('/admin/categories/:idcategory', function($idcategory){
+  User::verifyLogin();
+	$category = new Category();
+	$category->get((int)$idcategory);
+	chamaTpl("categories-update", array(
+			"category" => $category->getValues()
+		)
+	);
+
+});
+
+$app->post('/admin/categories/:idcategory', function($idcategory){
+
+	$category = new Category();
+	$category->get((int)$idcategory);
+  $category->setData($_POST);
+	$category->save();
+	header("Location: /admin/categories");
+	exit;
 });
 
 $app->run();
