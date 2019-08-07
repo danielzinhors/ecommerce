@@ -5,7 +5,11 @@ use \Hcode\Model\Product;
 
 $app->get('/', function() {
 
-		chamaTpl("index");
+		$products = Product::listAll();
+
+		chamaTpl("index", array(
+				"products" => Product::checkList($products)
+		));
 
 });
 
