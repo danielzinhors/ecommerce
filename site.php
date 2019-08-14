@@ -21,7 +21,7 @@ $app->get('/categories/:idcategory', function($idcategory){
     chamaTpl("category",
 				array(
 					"category" => $category->getValues(),
-					"products" => []
+					"products" => Product::checkList($category->getProducts())
 				)
 		);
 });
