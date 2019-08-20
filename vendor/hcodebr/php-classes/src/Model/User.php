@@ -16,6 +16,40 @@ class User extends Model{
       "iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
     ];
 
+    public static function getFromSession(){
+          $user = new User();
+
+          if (isset($_SESSION[User::SESSION]) && (int)$_SESSION[User::SESSION]['iduser']){
+              $user->setData($_SESSION[User::SESSION]);
+          }
+
+          return $user;
+
+    }
+
+    public static function checkLogin($inadmin = true){
+
+        if(
+          !isset($_SESSION[User::SESSION])
+    			||
+    			!$_SESSION[User::SESSION]
+    			||
+    			!(int)$_SESSION[User::SESSION]["iduser"] > 0
+        ){
+          //não está logado
+          return false;
+        }else{
+            if($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true){
+                return true;
+            }else if($inadmin === false){
+                return true;
+            }else{
+              return false;
+            }
+        }
+
+    }
+
     public static function login($login, $password){
 
           $sql = new Sql();
@@ -55,20 +89,16 @@ class User extends Model{
   	public static function verifyLogin($inadmin = true)
   	{
 
-  		if (
-    			!isset($_SESSION[User::SESSION])
-    			||
-    			!$_SESSION[User::SESSION]
-    			||
-    			!(int)$_SESSION[User::SESSION]["iduser"] > 0
-    			||
-    			(bool)$_SESSION[User::SESSION]["iduser"] !== $inadmin
-  		) {
+          if (!User::checkLogin($inadmin)) {
 
-  			header("Location: /admin/login");
-  			exit;
+        			if ($inadmin) {
+        				header("Location: /admin/login");
+        			} else {
+        				header("Location: /login");
+        			}
+        			exit;
 
-  		}
+		      }
 
   	}
 

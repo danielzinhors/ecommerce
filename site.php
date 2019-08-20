@@ -2,6 +2,7 @@
 
 use \Hcode\Model\Category;
 use \Hcode\Model\Product;
+use \Hcode\Model\Cart;
 
 $app->get('/', function() {
 
@@ -12,19 +13,6 @@ $app->get('/', function() {
 		));
 
 });
-
-/*$app->get('/categories/:idcategory', function($idcategory){
-
-    $category = new Category;
-    $category->get((int)$idcategory);
-
-    chamaTpl("category",
-				array(
-					"category" => $category->getValues(),
-					"products" => Product::checkList($category->getProducts())
-				)
-		);
-});*/
 
 $app->get('/categories/:idcategory', function($idcategory){
 
@@ -66,6 +54,13 @@ $app->get('/products/:desurl', function($desurl){
 			  )
 		);
 
+});
+
+$app->get('/cart', function(){
+
+		$cart = Cart::getFromSession();
+
+		chamaTpl("cart");
 });
 
 
