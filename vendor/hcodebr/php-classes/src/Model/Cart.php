@@ -20,6 +20,7 @@ class Cart extends Model{
 
         			   $cart->get((int)$_SESSION[Cart::SESSION]['idcart']);
 
+
         		} else {
 
           			$cart->getFromSessionID();
@@ -118,9 +119,70 @@ class Cart extends Model{
 
         $this->setData($results[0]);
 
+    }
 
+    public function addProduct(Product $product){
+
+        $sql = new Sql();
+
+        $sql->query(
+            "INSERT INTO
+            tb_cartsproducts (idcart, idproduct)
+            VALUES (:idcart, :idproduct)",
+            array(
+              ':idcart' => $this->getidcart(),
+              ':idproduct' => $product->getidproduct()
+            )
+        );
 
     }
+
+    public function removeProduct(Product $product, $all = false){
+
+        $sql = new Sql();
+
+        if ($all){
+          $filtro = 'AND 1=1';
+        }else{
+          $filtro = ' LIMIT 1';
+        }
+        $sql->query(
+          "DELETE
+          FROM tb_cartsproducts
+          WHERE idcart = :idcart
+          and idproduct = :idproduct
+          AND dtremoved IS NULL
+          $filtro",
+          array(
+            ':idcart' => $this->getidcart(),
+            ':idproduct' => $product->getidproduct()
+          )
+        );
+
+    }
+
+    public function getProducts(){
+
+        $sql = new Sql();
+
+        $rows = $sql->select(
+          "SELECT b.idproduct, b.desproduct, b.vlprice, b.vlwidth,
+	           b.vlheight, b.vllength, b.vlweight, b.desurl,
+             COUNT(*) AS nrqtd, SUM(b.vlprice) AS vltotal
+          FROM tb_cartsproducts a
+          INNER JOIN tb_products b ON b.idproduct = a.idproduct
+          WHERE a.idcart = :idcart
+          AND a.dtremoved IS NULL
+          GROUP BY b.idproduct, b.desproduct, b.vlprice, b.vlwidth, b.vlheight, b.vllength, b.vlweight, b.desurl
+          ORDER BY b.desproduct",
+          array(
+            ':idcart' => $this->getidcart()
+          )
+        );
+
+        return Product::checkList($rows);
+    }
+
 
 }
 
