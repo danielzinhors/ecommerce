@@ -15,9 +15,11 @@ require_once("site.php");
 require_once("site-categories.php");
 require_once("site-products.php");
 require_once("site-cart.php");
+require_once("site-login.php");
+require_once("site-checkout.php");
 //  Partes do admin
 require_once("admin.php");
-require_once("login.php");
+require_once("admin-login.php");
 require_once("password.php");
 require_once("admin-users.php");
 require_once("admin-products.php");

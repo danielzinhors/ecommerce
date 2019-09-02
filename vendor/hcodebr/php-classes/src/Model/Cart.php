@@ -4,7 +4,6 @@ namespace Hcode\Model;
 
 use \Hcode\DB\Sql;
 use \Hcode\Model;
-use \Hcode\Mailer;
 use \Hcode\Model\User;
 
 class Cart extends Model{
@@ -252,6 +251,7 @@ class Cart extends Model{
             }else{
                 Cart::clearMsgError();
             }
+
             $this->setnrdays($result->PrazoEntrega);
             $this->setvlfreight(Cart::formatValueToDecimal($result->Valor));
             $this->setdeszipcode($nrzipcode);
@@ -275,7 +275,7 @@ class Cart extends Model{
     }
 
     public static function getMsgError(){
-        $msg =  (isset($_SESSION[Cart::SESSION_ERROR])) ? $_SESSION[Cart::SESSION_ERROR] : "";
+        $msg =  (isset($_SESSION[Cart::SESSION_ERROR]) && $_SESSION[Cart::SESSION_ERROR]) ? $_SESSION[Cart::SESSION_ERROR] : "";
         Cart::clearMsgError();
         return $msg;
     }
@@ -303,10 +303,14 @@ class Cart extends Model{
 
         $this->updateFreight();
         $totals = $this->getProductsTotals();
-
-        $this->setvlsubtotal($totals['vlprice']);
-        $this->setvltotal($totals['vlprice'] + (float)$this->getvlfreight());
-
+        if ($totals['nrqtd'] > 0){
+            $this->setvlsubtotal($totals['vlprice']);
+            $this->setvltotal($totals['vlprice'] + (float)$this->getvlfreight());
+        }else{
+          $this->setvlsubtotal(0);
+          $this->setvltotal(0);
+          $this->setvlfreight(0);
+        }
     }
 
 }
