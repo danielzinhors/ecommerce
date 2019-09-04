@@ -31,6 +31,11 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
+    <?php if( $error != '' ){ ?>
+    <div class="alert alert-danger">
+        <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+    </div>
+    <?php } ?>
     <p class="login-box-msg">Conectar para uma nova sessão</p>
 
     <form action="/admin/login" method="post">
@@ -68,7 +73,7 @@
     </div>
 
 -->
-    <a href="/forgot">Esqueci minha senha</a><br>
+    <a href="/admin/forgot">Esqueci minha senha</a><br>
     <a href="register.html" class="text-center">Registrar um novo usuário</a>
 
   </div>

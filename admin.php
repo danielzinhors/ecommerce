@@ -4,7 +4,7 @@
 use \Hcode\Model\User;
 
 function acessarAdmin(){
-
+	
 		User::verifyLogin();
 		chamaTplAdmin("index");
 }

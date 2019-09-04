@@ -4,7 +4,7 @@ use \Hcode\Model\User;
 
 $app->get('/forgot', function(){
 
-		chamaTplAdmin("forgot", array(), false, false);
+		chamaTpl("forgot", array());
 });
 
 $app->post('/forgot', function(){
@@ -17,19 +17,17 @@ $app->post('/forgot', function(){
 
 $app->get('/forgot/sent', function(){
 
-  	chamaTplAdmin("forgot-sent", array(), false, false);
+  	chamaTpl("forgot-sent", array());
 });
 
 $app->get('/forgot/reset', function(){
 
 		$user = User::validForgotDecrypt($_GET["code"]);
 
-		chamaTplAdmin("forgot-reset", array(
+		chamaTpl("forgot-reset", array(
 			  "name" => $user["desperson"],
 			  "code" => $_GET["code"]
-		  ),
-			false,
-			false
+		  )
 		);
 });
 
@@ -45,7 +43,7 @@ $app->post('/forgot/reset', function(){
 	  $password = User::getPasswordHash($_POST["password"]);
 		$user->setPassword($password);
 
-		chamaTplAdmin("forgot-reset-success", array(), false, false);
+		chamaTpl("forgot-reset-success", array());
 
 });
 

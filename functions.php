@@ -34,8 +34,11 @@ function chamaTplAdmin($view, $data = array(), $mostraHeader = true, $mostraFoot
 		$page->setTpl($view, $data);
 }
 
-function formatPrice(float $vlprice){
+function formatPrice($vlprice){
 
+    if(!$vlprice > 0){
+			$vlprice = 0;
+		}
 		return number_format($vlprice, '2', ',', '.');
 
 }

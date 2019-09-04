@@ -61,9 +61,9 @@ class User extends Model{
             "SELECT *
             FROM tb_users a
             INNER JOIN tb_persons b ON a.idperson = b.idperson
-            WHERE deslogin = :LOGIN",
+            WHERE deslogin = :deslogin",
             array(
-              ":LOGIN" => $login
+              ":deslogin" => $login
             )
           );
 
@@ -98,8 +98,7 @@ class User extends Model{
 
   	}
 
-  	public static function verifyLogin($inadmin = true)
-  	{
+  	public static function verifyLogin($inadmin = true){
 
           if (!User::checkLogin($inadmin)) {
 
@@ -109,21 +108,20 @@ class User extends Model{
         				header("Location: /login");
         			}
         			exit;
-
-		      }
+          }
 
   	}
 
     public static function listAll(){
 
-      $sql = new Sql();
+          $sql = new Sql();
 
-      return $sql->select(
-          "SELECT *
-          FROM tb_users a
-            INNER JOIN tb_persons b USING(idperson)
-            order by desperson"
-      );
+          return $sql->select(
+              "SELECT *
+              FROM tb_users a
+                INNER JOIN tb_persons b USING(idperson)
+                order by desperson"
+          );
 
 
     }

@@ -37,7 +37,7 @@
   <div class="lockscreen-item">
 
     <!-- lockscreen credentials (contains the form) -->
-    <form  action="/forgot/reset" method="post">
+    <form  action="/admin/forgot/reset" method="post">
       <input type="hidden" name="code" value="<?php echo htmlspecialchars( $code, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="input-group">
         <input type="password" class="form-control" placeholder="Digite a nova senha" name="password">
