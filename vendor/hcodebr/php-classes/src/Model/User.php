@@ -14,6 +14,7 @@ class User extends Model{
     const SECRET_RET = 'berincltdabutia_';
     const ERROR = 'UserError';
     const ERROR_REGISTER = 'UserErrorRegister';
+    const MSG_SUCCESS = 'UserSeccess';
 
     protected $fields = [
       "iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
@@ -402,6 +403,21 @@ class User extends Model{
           return (count($results) > 0);
 
       }
+
+      public static function setSuccess($msg){
+          $_SESSION[User::MSG_SUCCESS] = $msg;
+      }
+
+      public static function getSuccess(){
+          $msg =  (isset($_SESSION[User::MSG_SUCCESS]) && $_SESSION[User::MSG_SUCCESS]) ? $_SESSION[User::MSG_SUCCESS] : "";
+          User::clearSuccess();
+          return $msg;
+      }
+
+      public static function clearSuccess(){
+          $_SESSION[User::MSG_SUCCESS] = NULL;
+      }
+
 }
 
 ?>
