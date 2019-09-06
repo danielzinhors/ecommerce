@@ -8,7 +8,7 @@ $app->get('/login', function() {
       array(
         'error' => User::getMsgError(),
         'errorRegister' => User::getErrorRegister(),
-        'registerValues' => (isset($_SESSION['registerValues'])) ? $_SESSION['registerValues'] :
+        'registerValues' => //(isset($_SESSION['registerValues'])) ? $_SESSION['registerValues'] :
               ['name' => '', 'email' => '', 'phone' => '']
       ), true, true);
 });

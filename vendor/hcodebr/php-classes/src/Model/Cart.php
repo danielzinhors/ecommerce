@@ -116,7 +116,6 @@ class Cart extends Model{
             )
         );
 
-
         $this->setData($results[0]);
 
     }
@@ -135,7 +134,7 @@ class Cart extends Model{
             )
         );
 
-        $this->getCalculateTotal();
+        $this->getCalculateTotals();
 
     }
 
@@ -160,7 +159,7 @@ class Cart extends Model{
             ':idproduct' => $product->getidproduct()
           )
         );
-        $this->getCalculateTotal();
+        $this->getCalculateTotals();
     }
 
     public function getProducts(){
