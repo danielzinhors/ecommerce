@@ -2,6 +2,8 @@
 use \Hcode\Model\Cart;
 use \Hcode\Model\Address;
 use \Hcode\Model\User;
+use \Hcode\Model\Order;
+use \Hcode\Model\OrderStatus;
 
 $app->get('/checkout', function() {
 
@@ -30,13 +32,14 @@ $app->get('/checkout', function() {
   	if (!$address->getdeszipcode()) $address->setdeszipcode('');
 
 		chamaTpl("checkout",
-      array(
-        'cart' => $cart->getValues(),
-        'address' => $address->getValues(),
-        'products' => $cart->getProducts(),
-        'error' => Address::getMsgError()
-      ),
-      true, true);
+        array(
+          'cart' => $cart->getValues(),
+          'address' => $address->getValues(),
+          'products' => $cart->getProducts(),
+          'error' => Address::getMsgError()
+        ),
+        true, true
+    );
 });
 
 $app->post('/checkout', function() {
@@ -86,9 +89,28 @@ $app->post('/checkout', function() {
     $_POST['idperson'] = $user->getidperson();
 
     $address->setData($_POST);
+
     $address->save();
 
-    header("Location: /order");
+    $cart = Cart::getFromSession();
+
+    $order = new Order();
+
+    $totals = $cart->getCalculateTotal();
+
+    $order->setData(
+        array(
+            'idcart' => $cart->getidcart(),
+            'idaddress' => $address->getidaddress(),
+            'iduser' => $user->getiduser(),
+            'idstatus' => OrderStatus::EM_ABERTO,
+            'vltotal' => $cart->getvltotal()
+        )
+    );
+
+    $order->save();
+
+    header("Location: /order/" . $order->getidorder());
     exit;
 
 });

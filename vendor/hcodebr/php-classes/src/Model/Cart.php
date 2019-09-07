@@ -134,7 +134,7 @@ class Cart extends Model{
             )
         );
 
-        $this->getCalculateTotals();
+        $this->getCalculateTotal();
 
     }
 
@@ -159,7 +159,7 @@ class Cart extends Model{
             ':idproduct' => $product->getidproduct()
           )
         );
-        $this->getCalculateTotals();
+        $this->getCalculateTotal();
     }
 
     public function getProducts(){
@@ -302,6 +302,7 @@ class Cart extends Model{
 
         $this->updateFreight();
         $totals = $this->getProductsTotals();
+
         if ($totals['nrqtd'] > 0){
             $this->setvlsubtotal($totals['vlprice']);
             $this->setvltotal($totals['vlprice'] + (float)$this->getvlfreight());

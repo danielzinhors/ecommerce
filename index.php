@@ -19,6 +19,8 @@ require_once("site-login.php");
 require_once("site-checkout.php");
 require_once("site-password.php");
 require_once("site-profile.php");
+require_once("site-order.php");
+require_once("site-boleto-payment.php");
 //  Partes do admin
 require_once("admin.php");
 require_once("admin-login.php");

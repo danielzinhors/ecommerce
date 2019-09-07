@@ -70,7 +70,7 @@ class Address extends Model{
         );
 
         if(count($results) > 0){
-            $this->seData($results[0]);
+            $this->setData($results[0]);
         }
     }
 
