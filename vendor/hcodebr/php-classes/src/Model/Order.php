@@ -32,7 +32,7 @@ class Order extends Model {
               			':vltotal' => $this->getvltotal()
                 )
         		);
-          
+
         		if (count($results) > 0) {
         			$this->setData($results[0]);
         		}
@@ -56,7 +56,7 @@ class Order extends Model {
           			   ':idorder' => $idorder
                 )
         	  );
-
+            
         		if (count($results) > 0) {
         			$this->setData($results[0]);
         		}
