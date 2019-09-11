@@ -28,6 +28,7 @@ require_once("admin-password.php");
 require_once("admin-users.php");
 require_once("admin-products.php");
 require_once("admin-categories.php");
+require_once("admin-pedidos.php");
 
 $app->run();
 

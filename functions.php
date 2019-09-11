@@ -15,6 +15,12 @@ function get($key){
 		return str_replace("'", "", $_GET[$key]);
 }
 
+function dateFormat($data){
+
+	return date('d/m/Y', strtotime($data));
+
+}
+
 function chamaTpl($view, $data = array(), $mostraHeader = true, $mostraFooter = true){
 
 		$page = new Page(array(
