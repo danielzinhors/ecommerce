@@ -14,7 +14,7 @@ class User extends Model{
     const SECRET_RET = 'berincltdabutia_';
     const ERROR = 'UserError';
     const ERROR_REGISTER = 'UserErrorRegister';
-    const MSG_SUCCESS = 'UserSeccess';
+    const MSG_SUCCESS = 'UserSuccess';
 
     protected $fields = [
       "iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"

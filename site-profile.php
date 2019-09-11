@@ -79,7 +79,7 @@ $app->get('/profile/orders/:idorder', function($idorder){
   $cart = new Cart();
 
   $cart->get((int)$order->getidcart());
-  
+
   chamaTpl("profile-orders-detail",
       array(
         'order' => $order->getValues(),
@@ -89,6 +89,71 @@ $app->get('/profile/orders/:idorder', function($idorder){
   );
 
 });
+
+$app->get('/profile/change-password', function(){
+
+  User::verifyLogin(false);
+
+  chamaTpl("profile-change-password",
+      array(
+        'changePassError' => User::getMsgError(),
+        'changePassSuccess' => User::getSuccess()
+      )
+  );
+
+});
+
+$app->post('/profile/change-password', function(){
+
+  User::verifyLogin(false);
+
+  if(!isset($_POST['current_pass']) || $_POST['current_pass'] === ''){
+    User::setMsgError('Digite a senha atual');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  if(!isset($_POST['new_pass']) || $_POST['new_pass'] === ''){
+    User::setMsgError('Digite a nova atual');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  if(!isset($_POST['new_pass_confirm']) || $_POST['new_pass_confirm'] === ''){
+    User::setMsgError('Confirme a nova senha');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  if($_POST['new_pass_confirm'] != $_POST['new_pass']){
+    User::setMsgError('Confirme a senha corretamente');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  if($_POST['current_pass'] === $_POST['new_pass']){
+    User::setMsgError('A nova senha não pode ser igual a senha atual');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  $user = User::getFromSession();
+  if(!password_verify($_POST['current_pass'], $user->getdespassword())){
+    User::setMsgError('Senha atual inválida');
+    header("Location: /profile/change-password");
+    exit;
+  }
+
+  $user->setdespassword($_POST['new_pass']);
+  $user->update();
+
+  User::setSuccess('Senha alterada com sucesso!');
+  header("Location: /profile/change-password");
+  exit;
+
+});
+
+
 
 
  ?>
