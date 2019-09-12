@@ -7,13 +7,44 @@ use \Hcode\Model\User;
 
 $app->get('/admin/categories', function(){
 
-    User::verifyLogin();
-		$categories = Category::listAll();
+  User::verifyLogin();
 
-    chamaTplAdmin('categories', array(
-			   "categories" => $categories
-		  )
-		);
+  $search = (isset($_GET['search'])) ? $_GET['search'] : "";
+
+  $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+  if($search != ''){
+     $pagination = Category::getPageSearch($search, $page);
+  }else{
+      $pagination = Category::getPage($page);
+  }
+
+  $pages = [];
+
+  for($x = 0; $x < $pagination['pages']; $x++){
+      array_push(
+        $pages,
+        array(
+          'href' => '/admin/categories?' . http_build_query(
+              array(
+                  'page' => $x + 1,
+                  'search' => $search
+              )
+          ),
+          'text' => $x + 1
+        )
+      );
+  }
+
+  chamaTplAdmin("categories", array(
+        "categories" => $pagination['data'],
+        'search' => $search,
+        'pages' => $pages
+      ),
+      true,
+      true
+  );
+
 });
 
 $app->get('/admin/categories/create', function(){
