@@ -56,7 +56,7 @@ class Order extends Model {
           			   ':idorder' => $idorder
                 )
         	  );
-            
+
         		if (count($results) > 0) {
         			$this->setData($results[0]);
         		}
@@ -166,7 +166,7 @@ class Order extends Model {
           			ORDER BY a.dtregister DESC
           			LIMIT $start, $itemsPerPage;"
             );
-
+            
         		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
         		return array(
