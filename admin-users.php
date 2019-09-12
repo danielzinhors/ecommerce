@@ -6,14 +6,42 @@ use \Hcode\Model\User;
 $app->get('/admin/users', function(){
 
 		User::verifyLogin();
-		$users = User::listAll();
+
+    $search = (isset($_GET['search'])) ? $_GET['search'] : "";
+
+		$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+		if($search != ''){
+			 $pagination = User::getPageSearch($search, $page);
+		}else{
+				$pagination = User::getPage($page);
+		}
+
+		$pages = [];
+
+		for($x = 0; $x < $pagination['pages']; $x++){
+				array_push(
+					$pages,
+					array(
+						'href' => '/admin/users?' . http_build_query(
+								array(
+										'page' => $x + 1,
+										'search' => $search
+								)
+					  ),
+						'text' => $x + 1
+					)
+				);
+		}
 
 		chamaTplAdmin("users", array(
-			"users" => $users
-		),
-		true,
-		true
-	);
+					"users" => $pagination['data'],
+					'search' => $search,
+					'pages' => $pages
+				),
+				true,
+				true
+	  );
 
 });
 //criar usuario
