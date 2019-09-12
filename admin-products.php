@@ -6,13 +6,44 @@ use \Hcode\Model\User;
 
 $app->get('/admin/products', function(){
 
-    User::verifyLogin();
-		$products = Product::listAll();
+  User::verifyLogin();
 
-    chamaTplAdmin('products', array(
-					"products" => $products
-		  )
-		);
+  $search = (isset($_GET['search'])) ? $_GET['search'] : "";
+
+  $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+  if($search != ''){
+     $pagination = Product::getPageSearch($search, $page);
+  }else{
+      $pagination = Product::getPage($page);
+  }
+
+  $pages = [];
+
+  for($x = 0; $x < $pagination['pages']; $x++){
+      array_push(
+        $pages,
+        array(
+          'href' => '/admin/products?' . http_build_query(
+              array(
+                  'page' => $x + 1,
+                  'search' => $search
+              )
+          ),
+          'text' => $x + 1
+        )
+      );
+  }
+
+  chamaTplAdmin("products", array(
+        "products" => $pagination['data'],
+        'search' => $search,
+        'pages' => $pages
+      ),
+      true,
+      true
+  );
+
 });
 
 $app->get('/admin/products/create', function(){
