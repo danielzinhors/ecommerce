@@ -110,9 +110,10 @@ $app->post('/checkout', function() {
 
     $order->save();
 
-    header("Location: /order/" . $order->getidorder());
+    header("Location: /order/" . $order->getidorder() . "/pagseguro");
     exit;
 
 });
+
 
  ?>
