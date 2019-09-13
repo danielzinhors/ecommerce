@@ -46,4 +46,25 @@ $app->get("/order/:idorder/pagseguro", function($idorder){
 
 });
 
+$app->get("/order/:idorder/paypal", function($idorder){
+
+    User::verifyLogin(false);
+
+    $order = new Order;
+
+    $order->get((int)$idorder);
+    $cart = $order->getCart();
+    
+    chamaTpl("payment-paypal",
+        array(
+            'order' => $order->getValues(),
+            'cart' => $cart->getValues(),
+            'products' => $cart->getProducts()
+        ),
+        false,
+        false
+    );
+
+});
+
 ?>

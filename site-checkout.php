@@ -58,6 +58,12 @@ $app->post('/checkout', function() {
     		exit;
   	}
 
+    if (!isset($_POST['desnumber']) || $_POST['desnumber'] === '') {
+    		Address::setMsgError("Informe o numero.");
+    		header('Location: /checkout');
+    		exit;
+  	}
+
   	if (!isset($_POST['desdistrict']) || $_POST['desdistrict'] === '') {
     		Address::setMsgError("Informe o bairro.");
     		header('Location: /checkout');
@@ -109,9 +115,16 @@ $app->post('/checkout', function() {
     );
 
     $order->save();
+    if ((int)$_POST['payment-method'] === 1){
 
-    header("Location: /order/" . $order->getidorder() . "/pagseguro");
-    exit;
+          header("Location: /order/" . $order->getidorder() . "/pagseguro");
+          exit;
+    }else{
+
+          header("Location: /order/" . $order->getidorder() . "/paypal");
+          exit;
+
+    }
 
 });
 

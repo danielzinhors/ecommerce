@@ -1,13 +1,13 @@
 <form method="post" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 
         <!-- Campos obrigatórios -->
-        <input name="receiverEmail" type="hidden" value="danielzinhors@gmail.com">  
+        <input name="receiverEmail" type="hidden" value="danielzinhors@gmail.com">
         <input name="currency" type="hidden" value="BRL">
 
         {loop="$products"}
         <input name="itemId{$counter+1}" type="hidden" value="{$value.idproduct}">
         <input name="itemDescription{$counter+1}" type="hidden" value="{$value.desproduct}">
-        <input name="itemAmount{$counter+1}" type="hidden" value="{$value.vltotal}">
+        <input name="itemAmount{$counter+1}" type="hidden" value="{$value.vlprice}"> <!-- ajustar pois o pagseguro soma automatico pela qtd-->
         <input name="itemQuantity{$counter+1}" type="hidden" value="{$value.nrqtd}">
         <input name="itemWeight{$counter+1}" type="hidden" value="{$value.vlweight*1000}">
         {/loop}
