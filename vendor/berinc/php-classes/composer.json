@@ -1,9 +1,9 @@
 {
-    "name": "hcodebr/php-classes",
+    "name": "berinc/php-classes",
     "minimum-stability": "dev",
     "type": "library",
     "description": "Classes PHP",
-    "homepage": "https://github.com/hcodebr/php-classes",
+    "homepage": "https://github.com/berinc/php-classes",
     "authors": [
         {
             "name": "Hcode Treinamentos",

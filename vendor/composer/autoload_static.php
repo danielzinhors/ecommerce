@@ -16,7 +16,7 @@ class ComposerStaticInit2d8d6af939a43b825c61f2d45885f1fb
     public static $prefixDirsPsr4 = array (
         'Hcode\\' => 
         array (
-            0 => __DIR__ . '/..' . '/hcodebr/php-classes/src',
+            0 => __DIR__ . '/..' . '/berinc/php-classes/src',
         ),
     );
 
