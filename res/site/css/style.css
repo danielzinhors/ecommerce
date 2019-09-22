@@ -31,10 +31,10 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 
 .header-area {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #070707;
 }
 .header-area a {
-    color: #888;
+    color: #FFF;
 }
 .user-menu ul {
     list-style: outside none none;
@@ -73,7 +73,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
     text-align: center;
 }
 
-.mainmenu-area {background: none repeat scroll 0 0 #fbfbfb;
+.mainmenu-area {background: none repeat scroll 0 0 #070707;
 font-family: "Roboto Condensed",sans-serif;
 text-transform: uppercase;
 width: 100%;
@@ -104,11 +104,11 @@ z-index: 999;}
     color: #666;
 }
 .cart-amunt {
-    color: #e67e22;
+    color: #070707;
     font-weight: 700;
 }
 .product-count {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #070707;
     border-radius: 50%;
     color: #fff;
     display: inline-block;
@@ -137,17 +137,17 @@ z-index: 999;}
     color: #fff;
 }
 .shopping-item:hover .product-count {
-    background: none repeat scroll 0 0 #000;
+    background: none repeat scroll 0 0 #070707;
 }
 
 
 .mainmenu-area ul.navbar-nav li a {
-    color: #6e6a6a;
+    color: #fff;
     font-size: 14px;
     padding: 20px;
 }
 
-.mainmenu-area ul.navbar-nav li:hover a, .mainmenu-area ul.navbar-nav li.active a {background: #e67e22; color:#FFF;}
+.mainmenu-area ul.navbar-nav li:hover a, .mainmenu-area ul.navbar-nav li.active a {background: #fff; color:#070707;}
 .mainmenu-area .nav > li > a:focus {color: #FFF;}
 
 .slider-area { width:80%; position:relative; margin:0 auto; padding:5px;}
@@ -546,19 +546,19 @@ z-index: 999;}
 }
 .product-widget-area .zigzag-bottom{background: #f4f4f4;}
 .footer-top-area .zigzag-bottom{background: #f4f4f4}
-.footer-top-area {background: none repeat scroll 0 0 #333;
-color: #999;
+.footer-top-area {background: none repeat scroll 0 0 #070707;
+color: #fff;
 padding: 35px 0 180px;}
 
 
 .footer-bottom-area {background: #000;color: #fff}
 .footer-about-us span {
-  color: #e67e22;
+  color: #fff;
 }
-.footer-wid-title {
-  font-family: raleway;
+.footer-wid-title {  
   font-size: 30px;
-  font-weight: 100;color: #fff
+  font-weight: 100;
+  color: #fff;
 }
 
 .footer-about-us h2 {
@@ -570,18 +570,18 @@ padding: 35px 0 180px;}
     padding: 0;
 }
 .footer-menu ul li {
-    border-bottom: 1px dashed #555;
+    border-bottom: 1px dashed #fff;
     padding: 5px 0;
 }
 .footer-menu a {
     display: block;
-    padding: 5px 0;color: #999
+    padding: 5px 0;color: #fff
 }
 
 
 .footer-social a {
-  background: none repeat scroll 0 0 #e67e22;
-  color: #fff;
+  background: none repeat scroll 0 0 #fff;
+  color: #070707;
   display: inline-block;
   font-size: 20px;
   height: 40px;
@@ -602,12 +602,12 @@ padding: 35px 0 180px;}
     border: medium none;
     margin-bottom: 10px;
     padding: 10px;
-    width: 100%;
+    width: 100%;border: 1px solid #e67e22
 }
 .newsletter-form input[type="submit"] {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #fff;
     border: medium none;
-    color: #fff;
+    color: #070707;
     display: inline-block;
     font-size: 18px;
     padding: 7px 20px;
@@ -617,10 +617,10 @@ padding: 35px 0 180px;}
 .newsletter-form {
     margin-top: 25px;
 }
-a {color: #e67e22}
+a {color: #fff}
 a:hover, a:focus {color: #17a78b}
 .footer-bottom-area {
-  background: none repeat scroll 0 0 #000;
+  background: none repeat scroll 0 0 #070707;
   color: #fff;
   padding-bottom: 40px;
 }
