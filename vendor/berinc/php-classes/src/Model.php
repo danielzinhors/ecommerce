@@ -1,6 +1,6 @@
 <?php
 
-namespace Hcode;
+namespace Berinc;
 
 class Model {
 

@@ -1,7 +1,7 @@
 <?php
 
 
-use \Hcode\Model\User;
+use \Berinc\Model\User;
 
 $app->get('/admin/users/:iduser/password', function($iduser){
 

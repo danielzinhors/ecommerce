@@ -1,6 +1,6 @@
 <?php
 
-use \Hcode\Model\User;
+use \Berinc\Model\User;
 
 $app->get('/login', function() {
 

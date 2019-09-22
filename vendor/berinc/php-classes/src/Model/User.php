@@ -1,11 +1,11 @@
 <?php
 
-namespace Hcode\Model;
+namespace Berinc\Model;
 
-use \Hcode\DB\Sql;
-use \Hcode\Model;
-use \Hcode\Mailer;
-use \Hcode\Model\Cart;
+use \Berinc\DB\Sql;
+use \Berinc\Model;
+use \Berinc\Mailer;
+use \Berinc\Model\Cart;
 
 class User extends Model{
 

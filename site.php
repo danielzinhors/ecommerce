@@ -1,14 +1,24 @@
 <?php
 
-use \Hcode\Model\Product;
+use \Berinc\Model\Product;
 
 $app->get('/', function() {
+	
+	chamaTpl("index2", 
+		array(),
+		false,
+		false
+	);
 
-		$products = Product::listAll();
+});
 
-		chamaTpl("index", array(
-				"products" => Product::checkList($products)
-		));
+$app->get('/dev', function() {
+	
+	$products = Product::listAll();
+	
+	chamaTpl("index", array(
+			"products" => Product::checkList($products)
+	));
 
 });
 

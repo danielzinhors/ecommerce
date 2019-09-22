@@ -1,14 +1,14 @@
 <?php
 
-namespace Hcode\Model;
+namespace Berinc\Model;
 
-use \Hcode\DB\Sql;
-use \Hcode\Model;
+use \Berinc\DB\Sql;
+use \Berinc\Model;
 
 class Product extends Model{
 
     public static function listAll(){
-
+      
       $sql = new Sql();
 
       return $sql->select(

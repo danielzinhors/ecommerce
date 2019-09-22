@@ -1,8 +1,8 @@
 <?php
-use \Hcode\Model\Cart;
-use \Hcode\Model\Address;
-use \Hcode\Model\User;
-use \Hcode\Model\Order;
+use \Berinc\Model\Cart;
+use \Berinc\Model\Address;
+use \Berinc\Model\User;
+use \Berinc\Model\Order;
 
 
 $app->get('/order/:idorder', function($idorder){

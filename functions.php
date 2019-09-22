@@ -1,9 +1,9 @@
 <?php
 
-use \Hcode\Page;
-use \Hcode\PageAdmin;
-use \Hcode\Model\User;
-use \Hcode\Model\Cart;
+use \Berinc\Page;
+use \Berinc\PageAdmin;
+use \Berinc\Model\User;
+use \Berinc\Model\Cart;
 
 function post($key){
 
@@ -23,43 +23,43 @@ function dateFormat($data){
 
 function chamaTpl($view, $data = array(), $mostraHeader = true, $mostraFooter = true){
 
-		$page = new Page(array(
+	$page = new Page(array(
 	    "header" => $mostraHeader,
 	    "footer" => $mostraFooter
-	  ));
+	));
 
-		$page->setTpl($view, $data);
+	$page->setTpl($view, $data);
 }
 
 function chamaTplAdmin($view, $data = array(), $mostraHeader = true, $mostraFooter = true){
 
-		$page = new PageAdmin(array(
+	$page = new PageAdmin(array(
 	    "header" => $mostraHeader,
 	    "footer" => $mostraFooter
-	  ));
+	));
 
-		$page->setTpl($view, $data);
+	$page->setTpl($view, $data);
 }
 
 function formatPrice($vlprice){
 
     if(!$vlprice > 0){
 			$vlprice = 0;
-		}
-		return number_format($vlprice, '2', ',', '.');
+	}
+	return number_format($vlprice, '2', ',', '.');
 
 }
 
 function checkLogin($inadmin = true){
 
-		return User::checkLogin($inadmin);
+	return User::checkLogin($inadmin);
 }
 
 function getUserName(){
 
-	  $user = User::getFromSession();
+	$user = User::getFromSession();
 
-		return $user->getdesperson();
+	return $user->getdesperson();
 }
 
 function getCartNrQtd(){

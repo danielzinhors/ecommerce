@@ -1,9 +1,9 @@
 <?php
 
-use \Hcode\Model\User;
-use \Hcode\Model\Cart;
-use \Hcode\Model\Order;
-use \Hcode\Model\OrderStatus;
+use \Berinc\Model\User;
+use \Berinc\Model\Cart;
+use \Berinc\Model\Order;
+use \Berinc\Model\OrderStatus;
 
 $app->get('/admin/orders/:idorder/status', function($idorder){
 

@@ -1,7 +1,7 @@
 <?php
 
-use \Hcode\Model\Product;
-use \Hcode\Model\Cart;
+use \Berinc\Model\Product;
+use \Berinc\Model\Cart;
 
 $app->get('/cart', function(){
 

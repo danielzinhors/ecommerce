@@ -1,6 +1,6 @@
 <?php
 
-use \Hcode\Model\Category;
+use \Berinc\Model\Category;
 
 $app->get('/categories/:idcategory', function($idcategory){
 

@@ -1,6 +1,6 @@
 <?php
-use \Hcode\Model\User;
-use \Hcode\Model\Order;
+use \Berinc\Model\User;
+use \Berinc\Model\Order;
 
 $app->get('/boleto/:idorder', function($idorder){
 
@@ -31,13 +31,13 @@ $app->get('/boleto/:idorder', function($idorder){
       " " . $order->getdescountry() . " CEP: " . $order->getdeszipcode();
 
     // INFORMACOES PARA O CLIENTE11
-    $dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja Hcode E-commerce";
+    $dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja berinc E-commerce";
     $dadosboleto["demonstrativo2"] = "Taxa bancária - R$ 0,00";
     $dadosboleto["demonstrativo3"] = "";
     $dadosboleto["instrucoes1"] = "- Sr. Caixa, cobrar multa de 2% após o vencimento";
     $dadosboleto["instrucoes2"] = "- Receber até 10 dias após o vencimento";
-    $dadosboleto["instrucoes3"] = "- Em caso de dúvidas entre em contato conosco: suporte@hcode.com.br";
-    $dadosboleto["instrucoes4"] = "&nbsp; Emitido pelo sistema Projeto Loja Hcode E-commerce - www.hcode.com.br";
+    $dadosboleto["instrucoes3"] = "- Em caso de dúvidas entre em contato conosco: suporte@berinc.com.br";
+    $dadosboleto["instrucoes4"] = "&nbsp; Emitido pelo sistema Projeto Loja berinc E-commerce - www.berinc.com.br";
 
     // DADOS OPCIONAIS DE ACORDO COM O BANCO OU CLIENTE
     $dadosboleto["quantidade"] = "";
@@ -59,11 +59,11 @@ $app->get('/boleto/:idorder', function($idorder){
     $dadosboleto["carteira"] = "175";  // Código da Carteira: pode ser 175, 174, 104, 109, 178, ou 157
 
     // SEUS DADOS
-    $dadosboleto["identificacao"] = "Hcode Treinamentos";
+    $dadosboleto["identificacao"] = "Berinc Treinamentos";
     $dadosboleto["cpf_cnpj"] = "24.700.731/0001-08";
     $dadosboleto["endereco"] = "Rua Ademar Saraiva Leão, 234 - Alvarenga, 09853-120";
     $dadosboleto["cidade_uf"] = "São Bernardo do Campo - SP";
-    $dadosboleto["cedente"] = "HCODE TREINAMENTOS LTDA - ME";
+    $dadosboleto["cedente"] = "Berinc TREINAMENTOS LTDA - ME";
 
     // NÃO ALTERAR!
     $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "res" . DIRECTORY_SEPARATOR .

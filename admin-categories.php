@@ -1,9 +1,9 @@
 <?php
 
 
-use \Hcode\Model\Category;
-use \Hcode\Model\Product;
-use \Hcode\Model\User;
+use \Berinc\Model\Category;
+use \Berinc\Model\Product;
+use \Berinc\Model\User;
 
 $app->get('/admin/categories', function(){
 

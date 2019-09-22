@@ -1,6 +1,6 @@
 <?php
 
-use \Hcode\Model\Product;
+use \Berinc\Model\Product;
 
 
 $app->get('/products/:desurl', function($desurl){

@@ -1,9 +1,9 @@
 {
-    "name": "berinc/ecommerce",
+    "name": "Berinc/ecommerce",
     "authors": [
         {
-            "name": "Hcode Treinamentos",
-            "email": "suporte@hcode.com.br"
+            "name": "Berinc Treinamentos",
+            "email": "suporte@Berinc.com.br"
         }
     ],
     "require": {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hcode\\": "vendor\\berinc\\php-classes\\src"
+            "Berinc\\": "vendor\\berinc\\php-classes\\src"
         }
     }
 }

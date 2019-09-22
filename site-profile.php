@@ -1,8 +1,8 @@
 <?php
 
-use \Hcode\Model\User;
-use \Hcode\Model\Order;
-use \Hcode\Model\Cart;
+use \Berinc\Model\User;
+use \Berinc\Model\Order;
+use \Berinc\Model\Cart;
 
 $app->get('/profile', function(){
 
