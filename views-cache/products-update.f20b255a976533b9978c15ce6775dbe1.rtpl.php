@@ -49,6 +49,10 @@
               <input type="text" class="form-control" id="desurl" name="desurl">
             </div>
             <div class="form-group">
+              <label for="in_slider">Mostrar no slider</label>
+              <input type="checkbox" id="in_slider" name="in_slider">
+            </div>
+            <div class="form-group">
               <label for="file">Foto</label>
               <input type="file" class="form-control" id="file" name="file" value="<?php echo htmlspecialchars( $product["vlweight"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
               <div class="box box-widget">

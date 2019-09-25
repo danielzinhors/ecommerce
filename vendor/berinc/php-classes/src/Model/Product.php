@@ -18,6 +18,18 @@ class Product extends Model{
       );
     }
 
+    public static function listSlider(){
+      
+      $sql = new Sql();
+
+      return $sql->select(
+          "SELECT *
+          FROM tb_products
+          WHERE in_slider='V'
+          order by desproduct"
+      );
+    }
+
     public static function checkList($list){
 
       foreach ($list as &$row) {

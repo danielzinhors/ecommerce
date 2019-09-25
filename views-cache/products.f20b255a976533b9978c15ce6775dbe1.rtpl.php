@@ -43,6 +43,7 @@
                     <th>Altura</th>
                     <th>Comprimento</th>
                     <th>Peso</th>
+                    <th>Slider</th>
                     <th style="width: 140px">&nbsp;</th>
                   </tr>
                 </thead>
@@ -56,6 +57,11 @@
                     <td><?php echo htmlspecialchars( $value1["vlheight"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["vllength"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["vlweight"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <?php if( $value1["in_slider"] == 'V' ){ ?>
+                       <td><input type="checkbox" checked disabled></td>
+                    <?php }else{ ?>
+                       <td><input type="checkbox" disabled></td>
+                    <?php } ?>
                     <td>
                       <a href="/admin/products/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/admin/products/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>

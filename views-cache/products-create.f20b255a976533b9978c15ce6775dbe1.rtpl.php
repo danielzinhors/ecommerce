@@ -53,6 +53,10 @@
               <label for="desurl">Url</label>
               <input type="text" class="form-control" id="desurl" name="desurl">
             </div>
+            <div class="form-group">
+              <label for="in_slider">Mostrar no slider</label>
+              <input type="checkbox" id="in_slider" name="in_slider">
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

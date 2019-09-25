@@ -3,12 +3,16 @@
 use \Berinc\Model\Product;
 
 $app->get('/', function() {
-	
+
 	$products = Product::listAll();
-	
-	chamaTpl("index", array(
-			"products" => Product::checkList($products)
-	));
+	$productsSlider = Product::listSlider();
+
+	chamaTpl("index", 
+		array(
+			"products" => Product::checkList($products),
+			"productsslider" => Product::checklist($productsSlider)
+		)
+	);
 
 });
 
