@@ -49,14 +49,16 @@ $app->get('/admin/products', function(){
 $app->get('/admin/products/create', function(){
 
     User::verifyLogin();
-
+    
     chamaTplAdmin('products-create');
 });
 
 $app->post('/admin/products/create', function(){
 
     User::verifyLogin();
-		$product = new Product();
+    $product = new Product();
+    $_POST["in_slider"] = (isset($_POST["in_slider"]))? 'V' : 'F';
+    //
 		$product->setData($_POST);
 		$product->save();
 
@@ -91,9 +93,11 @@ $app->get('/admin/products/:idproduct', function($idproduct){
 $app->post('/admin/products/:idproduct', function($idproduct){
 
 		$product = new Product();
-	  $product->get((int)$idproduct);
-		$product->setData($_POST);
-		$product->save();
+    $product->get((int)$idproduct);
+    $_POST["in_slider"] = (isset($_POST["in_slider"])) ? 'V' : 'F';
+    $product->setData($_POST);
+    $product->save();
+    
     if ((int)$_FILES["file"]["size"] > 0) {
         $product->setPhoto($_FILES["file"]);
   }

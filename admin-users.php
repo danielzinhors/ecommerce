@@ -5,17 +5,17 @@ use \Berinc\Model\User;
 
 $app->get('/admin/users/:iduser/password', function($iduser){
 
-		User::verifyLogin();
+	User::verifyLogin();
 
-		$user = new User();
-		$user->get((int)$iduser);
+	$user = new User();
+	$user->get((int)$iduser);
 
-		chamaTplAdmin("users-password", array(
-				'user' => $user->getValues(),
-				'msgError' => User::getMsgError(),
-				'msgSuccess' => User::getSuccess()
-			)
-		);
+	chamaTplAdmin("users-password", array(
+			'user' => $user->getValues(),
+			'msgError' => User::getMsgError(),
+			'msgSuccess' => User::getSuccess()
+		)
+	);
 
 
 });
@@ -126,7 +126,7 @@ $app->post('/admin/users/create', function(){
 
 		User::verifyLogin();
 		$user = new User();
-		$_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+		$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 		$user->setData($_POST);
 		$user->save();
 
@@ -139,7 +139,7 @@ $app->post('/admin/users/:iduser', function($iduser){
 
 		User::verifyLogin();
 		$user = new User();
-	  $_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+	    $_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 		$user->get((int)$iduser);
 		$user->setData($_POST);
 		$user->update();

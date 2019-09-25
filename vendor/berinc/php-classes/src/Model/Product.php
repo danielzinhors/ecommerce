@@ -72,7 +72,8 @@ class Product extends Model{
     				:vlheight,
     				:vllength,
     				:vlweight,
-    				:desurl)",
+            :desurl,
+            :in_slider)",
     				array(
     					":idproduct" => $this->getidproduct(),
     					":desproduct" => $this->getdesproduct(),
@@ -81,7 +82,8 @@ class Product extends Model{
     					":vlheight" => $this->getvlheight(),
     					":vllength" => $this->getvllength(),
     					":vlweight" => $this->getvlweight(),
-    					":desurl" => $this->getdesurl()
+              ":desurl" => $this->getdesurl(),
+              ":in_slider" => $this->getin_slider()
     				)
     			);
 

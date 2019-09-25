@@ -49,8 +49,9 @@
               <input type="text" class="form-control" id="desurl" name="desurl">
             </div>
             <div class="form-group">
-              <label for="in_slider">Mostrar no slider</label>
-              <input type="checkbox" id="in_slider" name="in_slider">
+              <label>
+                <input type="checkbox" name="in_slider" value="V" <?php if( $product["in_slider"] == 'V' ){ ?>checked<?php } ?>> Mostrar no slider
+              </label>
             </div>
             <div class="form-group">
               <label for="file">Foto</label>
