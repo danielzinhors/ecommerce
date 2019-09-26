@@ -14,7 +14,7 @@
                             <div class="block-slider-right">
                                 <h4 class="caption subtitle">R$ <?php echo formatPrice($value1["vlprice"]); ?></h4>
                                 <a class="caption button-radius" href="/cart/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/add"><span class="icon"></span>Comprar</a>
-                            </div>
+                            </div> 
                         </div>
 					</li>
 					<?php } ?>

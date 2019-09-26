@@ -73,13 +73,13 @@ body { font-family:Arial, Helvetica, sans-serif; }
     text-align: center;
 }
 
-.mainmenu-area {background: none repeat scroll 0 0 #070707;
-font-family: "Roboto Condensed",sans-serif;
-text-transform: uppercase;
-width: 100%;
-z-index: 999;}
-
-
+.mainmenu-area {
+    background: none repeat scroll 0 0 #070707;
+    font-family: "Roboto Condensed",sans-serif;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 999;
+}
 
 .logo h1 {
     font-size: 40px;
@@ -103,7 +103,7 @@ z-index: 999;}
 .shopping-item a {
     color: #666;
 }
-.cart-amunt {
+.cart-amunt {  /*bolinha do carrinho de compras*/
     color: #070707;
     font-weight: 700;
 }
@@ -207,7 +207,7 @@ z-index: 999;}
 }
 .block-slider .bx-prev:hover,
 .block-slider .bx-next:hover{
-	background: #e67e22;
+	background: #070707; /*botões de troca*/
 	color: #fff;
 	border-color: #e67e22;
 }
@@ -259,7 +259,7 @@ z-index: 999;}
 	margin-top: 27px;
 }
 .block-slider .caption-group .primary{
-	color: #1bd172;
+	color: #1bd172; /*titulo produto*/
 }
 .block-slider .caption-group .caption{
 
@@ -291,7 +291,7 @@ z-index: 999;}
   transition: all 1s ease;
   margin-top: 10px;
   font-size: 14px;
-  float: right;
+  
 }
 
 .button-radius .icon{
@@ -313,7 +313,7 @@ z-index: 999;}
   color: #fff;
   width: 28px;
   height: 28px;
-  background-color: #070707;
+  background-color: #070707; /*botão comprar slider*/
   border-radius: 90%;
   text-align: center;
   line-height: 26px;
@@ -403,7 +403,7 @@ z-index: 999;}
   width: 100%;transition: .4s;
 }
 .product-hover a {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #070707;
     border-radius: 5px;
     color: #fff;
     display: block;
@@ -414,7 +414,7 @@ z-index: 999;}
     position: absolute;
     text-align: center;
     text-transform: uppercase;
-    border: 1px solid #e67e22;
+    border: 1px solid #070707; /* botoes comprar e detalhes*/
     width: 80%;z-index: 99;transition: .4s;
 }
 .product-hover a:hover {
@@ -422,7 +422,7 @@ z-index: 999;}
   text-decoration: none;border-color: #444;
 }
 .product-carousel-price ins {
-  color: #e67e22;
+  color: #070707;
   font-weight: 700;
   margin-right: 5px;
   text-decoration: none;
@@ -467,7 +467,7 @@ z-index: 999;}
 }
 
 .latest-product .owl-nav div, .related-products-wrapper .owl-nav div {
-  background:#fa8072;
+  background:#070707; /*botoes prev next acima */
   color:#FFF;
   display: inline-block;
   margin-left: 15px;
@@ -489,7 +489,7 @@ z-index: 999;}
 }
 
 .brand-wrapper .owl-nav div {
-  background:#fa8072;
+  background:#070707; /* botoes prev next abaixo*/
   color:#FFF;
   display: inline-block;
   margin-left: 15px;
@@ -686,7 +686,7 @@ width: 10px;
   margin: 10px 0 0;
 }
 
-.product-big-title-area {background: url("../img/crossword.png") repeat scroll 0 0 #e67e22}
+.product-big-title-area {background: url("../img/crossword.png") repeat scroll 0 0 #070707}
 
 .product-bit-title h2 {
   font-family: raleway;
@@ -704,8 +704,6 @@ width: 10px;
 
 
 
-
-
 .sidebar-title {
     color: #fead53;
     font-size: 25px;
@@ -720,13 +718,13 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
     padding: 10px;
 }
 input[type="submit"], button[type=submit] {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #070707;  /*botoes submit*/
     border: medium none;
     color: #fff;
     padding: 11px 20px;
     text-transform: uppercase;
 }
-input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
+input[type="submit"]:hover, button[type=submit]:hover {background-color: #e67e22}
 .single-sidebar input[type="text"] {
     margin-bottom: 10px;
     width: 100%;
@@ -932,7 +930,7 @@ div.quantity input.minus {
     margin-right: -4px;
 }
 div.quantity input.plus, div.quantity input.minus {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #070707;
     border: medium none;
     color: #fff;
     height: 32px;
@@ -961,7 +959,7 @@ td.actions div.coupon {
     width: 40%;
 }
 .cart-collaterals h2 {
-    color: #e67e22;
+    color: #070707;  /* Titulos cart*/
     font-size: 25px;
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -1045,7 +1043,7 @@ div.cart-collaterals ul.products li.product .price ins {
     width: 100%;
 }
 #customer_details h3 {
-    color: #e67e22;
+    color: #070707; /* titulos do checkout*/
     font-size: 20px;
     text-transform: uppercase;
 }
@@ -1064,7 +1062,7 @@ div.cart-collaterals ul.products li.product .price ins {
     margin: 0 0 30px;
     padding: 0;
 }
-#payment ul.payment_methods li {
+#payment ul.payment_methodsbutton li {
     margin-bottom: 15px;
 }
 a.about_paypal {
@@ -1085,13 +1083,14 @@ table.shop_table td.product-remove a {
   display: inline-block;
   padding: 0 5px 2px;
   text-transform: uppercase;
+  color: #070707;
 }
 
 
 table.shop_table td.product-remove a:hover {color: #fff;background: red;text-decoration: none}
 table.shop_table td.product-name a{color: #222;}
 table.shop_table td.product-name a:hover {color: #e67e22;text-decoration: none}
-div.quantity input.plus:hover, div.quantity input.minus:hover {background-color: #222}
+div.quantity input.plus:hover, div.quantity input.minus:hover {background-color: #e67e22}
 div.cart-collaterals ul.products li.product a:hover h3 {color: #e67e22}
 div.cart-collaterals ul.products li.product a:hover {text-decoration: none}
 
