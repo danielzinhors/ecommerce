@@ -255,6 +255,15 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .block-slider-right{
     float: right;
 }
+
+.block-slider-right a{
+   color: #1bd172;
+}
+
+.block-slider-right h4{
+    color: #1bd172;
+ }
+
 .block-slider .caption-group .button-radius{
 	margin-top: 27px;
 }
@@ -422,7 +431,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
   text-decoration: none;border-color: #444;
 }
 .product-carousel-price ins {
-  color: #070707;
+  color: #1bd172;
   font-weight: 700;
   margin-right: 5px;
   text-decoration: none;
@@ -801,7 +810,7 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #e67e22
     margin-bottom: 25px;
 }
 .product-inner-price > ins {
-    color: #e67e22;
+    color: #1bd172;
     font-weight: 700;
     margin-right: 10px;
     text-decoration: none;
@@ -811,7 +820,7 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #e67e22
     margin-right: 15px;
 }
 .quantity input[type="number"] {
-    border: 1px solid #e67e22;
+    border: 1px solid #070707;
     padding: 5px;
     width: 50px;
 }
@@ -827,6 +836,9 @@ form.cart {
 }
 .product-inner-category {
     margin-bottom: 30px;
+}
+.product-inner-category a{
+    color: #070707;
 }
 .product-tab {
     border-bottom: 1px solid #ddd;
