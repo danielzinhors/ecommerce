@@ -260,6 +260,7 @@ desired effect
         <li class="active"><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categorias</span></a></li>
         <li class="active"><a href="/admin/products"><i class="fa fa-link"></i> <span>Produtos</span></a></li>
         <li class="active"><a href="/admin/orders"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span></a></li>
+        <li class="active"><a href="/admin/companys"><i class="fa fa-link"></i> <span>Empresas</span></a></li>
         <!--<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
