@@ -60,7 +60,10 @@ $app->post('/admin/companys/create', function(){
     User::verifyLogin();
     $company = new Company();
     $company->setData($_POST);
-	$company->save();
+    if ((int)$_FILES["logo"]["size"] > 0) {
+        $company->setPhoto($_FILES["logo"]);
+    }
+    $company->save();
 
     header("Location: /admin/companys");
     exit;
@@ -97,11 +100,13 @@ $app->post('/admin/companys/:idparamsempresa', function($idparamsempresa){
     $company->get((int)$idparamsempresa);
     
     $company->setData($_POST);
+    
+    
+    if ((int)$_FILES["logo"]["size"] > 0) {
+        $company->setPhoto($_FILES["logo"]);
+    }
     $company->save();
     
-    /*if ((int)$_FILES["file"]["size"] > 0) {
-        $company->setPhoto($_FILES["file"]);
-    }*/
     header("Location: /admin/companys");
     exit;
 

@@ -23,7 +23,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="/admin/companys/create" method="post">
+            <form role="form" action="/admin/companys/create" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="razao_social">Razão Social</label>
@@ -50,6 +50,15 @@
                   <input type="text" class="form-control" id="site" name="site" placeholder="http://www.berinc.com.br">
                 </div>
               </div>
+              <div class="form-group">
+                  <label for="file">Logo</label>
+                  <input type="file" class="form-control" id="logo" name="logo">
+                  <div class="box box-widget">
+                    <div class="box-body">
+                      <img class="img-responsive" id="image-preview" alt="Logo">
+                    </div>
+                  </div>
+              </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-success">Cadastrar</button>
@@ -63,4 +72,19 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+      document.querySelector('#logo').addEventListener('change', function(){
+      
+        var file = new FileReader();
+      
+        file.onload = function() {
+      
+          document.querySelector('#image-preview').src = file.result;
+      
+        }
+      
+        file.readAsDataURL(this.files[0]);
+      
+      });
+    </script>
     

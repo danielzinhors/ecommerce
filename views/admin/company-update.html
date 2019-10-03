@@ -72,4 +72,19 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+      document.querySelector('#logo').addEventListener('change', function(){
+      
+        var file = new FileReader();
+      
+        file.onload = function() {
+      
+          document.querySelector('#image-preview').src = file.result;
+      
+        }
+      
+        file.readAsDataURL(this.files[0]);
+      
+      });
+    </script>
     

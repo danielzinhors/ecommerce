@@ -130,6 +130,12 @@ class Company extends Model{
         }
     }
 
+    public function setPhoto($file){
+        $base64 = parent::getImgBase64($file, 'logo' . $this->getidparamsempresa());
+        $this->setlogo($base64);
+
+    }
+
 }
 
 ?>

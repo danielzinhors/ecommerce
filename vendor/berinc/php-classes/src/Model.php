@@ -51,6 +51,40 @@ class Model {
 
 	}
 
+	public function getImgBase64($file, $pid ){
+		
+		$extension = explode('.', $file['name']);
+		$extension = end($extension);
+	
+		switch ($extension) {
+	
+			case "jpg":
+			case "jpeg":
+			$image = imagecreatefromjpeg($file["tmp_name"]);
+			break;
+	
+			case "gif":
+			$image = imagecreatefromgif($file["tmp_name"]);
+			break;
+	
+			case "png":
+			$image = imagecreatefrompng($file["tmp_name"]);
+			break;
+	
+		}
+	    
+		$dist = sys_get_temp_dir() . DIRECTORY_SEPARATOR . $pid . ".jpg";
+	
+		imagejpeg($image, $dist);
+	
+		imagedestroy($image);
+		
+		$code = base64_encode(file_get_contents($dist));
+		
+		return 'data:image/jpeg;base64,' . $code;
+	}
+	
+
 }
 
  ?>
