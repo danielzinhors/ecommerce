@@ -92,6 +92,10 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .logo h1 a span {
     color: #0a0a0a;
 }
+.logo img {
+    max-width: 500px; 
+    max-height: 120px
+}
 .shopping-item {
     border: 1px solid #ddd;
     float: right;

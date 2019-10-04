@@ -32,7 +32,14 @@ class Company extends Model{
                 :idcontaemail,
                 :inscr_estadual,
                 :inscr_municipal,
-                :idaddresses,
+                :endereco,
+                :numero_endereco,
+                :compl_endereco,
+                :email_contato,
+                :facebook,
+                :twitter,
+                :whatsapp,
+                :descr_empresa,
                 :logo)",
                 array(
                     ":idparamsempresa" => $this->getidparamsempresa(),
@@ -43,7 +50,14 @@ class Company extends Model{
                     ":idcontaemail" => $this->getidcontaemail(),
                     ":inscr_estadual" => $this->getinscr_estadual(),
                     ":inscr_municipal" => $this->getinscr_municipal(),
-                    ":idaddresses" => $this->getidaddresses(),
+                    ":endereco" => $this->getendereco(),
+                    ':numero_endereco' => $this->getnumero_endereco(),
+                    ':compl_endereco' => $this->getcompl_endereco(),
+                    ':email_contato' => $this->getemail_contato(),
+                    ':facebook' => $this->getfacebook(),
+                    ':twitter' => $this->gettwitter(),
+                    ':whatsapp' => $this->getwhatsapp(),
+                    ':descr_empresa' => $this->getdescr_empresa(),
                     ":logo" => $this->getlogo()
                 )
             );
@@ -113,6 +127,7 @@ class Company extends Model{
     }
 
     public function get($idparamsempresa){
+        
         $sql = new Sql();
         $results = $sql->select(
              "SELECT *
@@ -122,18 +137,70 @@ class Company extends Model{
                ":idparamsempresa" => $idparamsempresa
              )
         );
-
+        
         if(count($results) === 0){
             throw new \Exception("Empresa não encontrada");
         }else {
           $this->setData($results[0]);
+          
         }
     }
 
     public function setPhoto($file){
-        $base64 = parent::getImgBase64($file, 'logo' . $this->getidparamsempresa());
+        $base64 = getImgBase64($file, 'logo' . $this->getidparamsempresa());
         $this->setlogo($base64);
 
+    }
+
+    public function getField($campo){
+        switch ($campo) {
+            case "logo": 
+              $campo = $this->getlogo();
+              break;
+            case "descr_empresa": 
+              $campo = $this->getdescr_empresa();
+              break;
+            case "razao_social": 
+              $campo = $this->getrazao_social();
+              break;
+            case "nome_fantasia": 
+              $campo = $this->getnome_fantasia();
+              break;
+            case "facebook": 
+              $campo = $this->getfacebook();
+              break;
+            case "twitter": 
+              $campo = $this->gettwitter();
+              break;
+            case "whatsapp": 
+              $campo = $this->getwhatsapp();
+              break;
+            case "cnpj": 
+              $campo = $this->getcnpj();
+              break;
+            case "email_contato": 
+              $campo = $this->getemail_contato();
+              break;
+            case "inscr_estadual": 
+              $campo = $this->getinscr_estadual();
+              break;
+            case "inscr_municipal": 
+              $campo = $this->getinscr_municipal();
+              break;
+            case "site": 
+              $campo = $this->getsite();
+              break;
+            case "endereco": 
+              $campo = $this->getendereco();
+              break;
+            case "numero_endereco": 
+              $campo = $this->getnumero_endereco();
+              break;
+            case "compl_endereco": 
+              $campo = $this->getcompl_endereco();
+              break;
+        }
+        return $campo;
     }
 
 }

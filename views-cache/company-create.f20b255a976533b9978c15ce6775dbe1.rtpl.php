@@ -33,22 +33,91 @@
                   <label for="nome_fantasia">Nome Fantasia</label>
                   <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" placeholder="Digite o nome fantasia">
                 </div>
-                <div class="form-group">
+              <div class="row">
+                <div class="col-sm-4">
                   <label for="cnpj">CNPJ</label>
                   <input type="number" class="form-control" id="cnpj" name="cnpj" placeholder="99900210144">
-                </div>
-                <div class="form-group">
+                </div>                  
+                <div class="col-sm-4">
                   <label for="inscr_estadual">IE</label>
                   <input type="number" class="form-control" id="inscr_estadual" name="inscr_estadual" placeholder="98565623154">
                 </div>
-                <div class="form-group">
+                <div class="col-sm-4">
                   <label for="inscr_municipal">IM</label>
                   <input type="number" class="form-control" id="inscr_municipal" name="inscr_municipal" placeholder="659863354">
                 </div>
-                <div class="form-group">
-                  <label for="site">Site</label>
-                  <input type="text" class="form-control" id="site" name="site" placeholder="http://www.berinc.com.br">
+              </div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <label for="endereco">Endereço</label>
+                  <input type="text" class="form-control" id="endereco" name="endereco" placeholder="rua sem saída">
                 </div>
+                <div class="col-sm-3">
+                  <label for="numero_endereco">Nº</label>
+                  <input type="number" class="form-control" id="numero_endereco" name="numero_endereco" placeholder="100">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="compl_endereco">Complemento</label>
+                <input type="text" class="form-control" id="compl_endereco" name="compl_endereco" placeholder="bl 1 apto 2">
+              </div>
+              <!--<div class="row">
+                <div class="col-sm-3">
+                  <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+                </div>
+                <div class="col-sm-3">
+                  <li class="dropdown dropdown-small">
+                      <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">linguagem :</span><span class="value">Português </span><b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Português</a></li>
+                          <li><a href="#">Inglês</a></li>
+                          <li><a href="#">Espanhol</a></li>
+                      </ul>
+                  </li>
+                </div>
+                <div class="col-sm-3">
+                  <li class="dropdown dropdown-small">
+                      <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">linguagem :</span><span class="value">Português </span><b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Português</a></li>
+                          <li><a href="#">Inglês</a></li>
+                          <li><a href="#">Espanhol</a></li>
+                      </ul>
+                  </li>
+                </div>    
+              </div>-->
+              <div class="row">
+                <div class="col-sm-6">
+                  <label for="email_contato">E-mail</label>
+                  <input type="email" class="form-control" id="compl_endereco" name="compl_endereco" placeholder="falecom@berinc.com.br">
+                </div>
+                <div class="col-sm-6">
+                  <label for="site">Site</label>
+                  <input type="url" class="form-control" id="site" name="site" placeholder="http://www.berinc.com.br">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <label for="facebook">Facebook</label>
+                  <input type="url" class="form-control" id="facebook" name="facebook" placeholder="http://www.facebook.com/berinc">
+                </div>                  
+                <div class="col-sm-4">
+                  <label for="twitter">Twitter</label>
+                  <input type="text" class="form-control" id="twitter" name="twitter" placeholder="@berinc">
+                </div>
+                <div class="col-sm-4">
+                  <label for="whatsapp">WhatsApp</label>
+                  <input type="number" class="form-control" id="whatsapp" name="whatsapp" placeholder="659863354">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="descr_empresa">Descrição</label>
+                <textarea class="form-control" id="descr_empresa" name="descr_empresa" placeholder="Somos uma empresa de tecnológia"></textarea>
               </div>
               <div class="form-group">
                   <label for="file">Logo</label>

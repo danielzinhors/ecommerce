@@ -33,21 +33,61 @@
                   <label for="nome_fantasia">Nome Fantasia</label>
                   <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" placeholder="Digite o nome fantasia" value="<?php echo htmlspecialchars( $company["nome_fantasia"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                 </div>
-                <div class="form-group">
-                  <label for="cnpj">CNPJ</label>
-                  <input type="number" class="form-control" id="cnpj" name="cnpj" placeholder="99900210144" value="<?php echo htmlspecialchars( $company["cnpj"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="number" class="form-control" id="cnpj" name="cnpj" placeholder="99900210144" value="<?php echo htmlspecialchars( $company["cnpj"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>                  
+                  <div class="col-sm-4">
+                    <label for="inscr_estadual">IE</label>
+                    <input type="number" class="form-control" id="inscr_estadual" name="inscr_estadual" placeholder="98565623154" value="<?php echo htmlspecialchars( $company["inscr_estadual"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="inscr_municipal">IM</label>
+                    <input type="number" class="form-control" id="inscr_municipal" name="inscr_municipal" placeholder="659863354" value="<?php echo htmlspecialchars( $company["inscr_municipal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-9">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="rua sem saída" value="<?php echo htmlspecialchars( $company["endereco"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="numero_endereco">Nº</label>
+                    <input type="number" class="form-control" id="numero_endereco" name="numero_endereco" placeholder="100" value="<?php echo htmlspecialchars( $company["numero_endereco"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="inscr_estadual">IE</label>
-                  <input type="number" class="form-control" id="inscr_estadual" name="inscr_estadual" placeholder="98565623154" value="<?php echo htmlspecialchars( $company["inscr_estadual"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  <label for="compl_endereco">Complemento</label>
+                  <input type="text" class="form-control" id="compl_endereco" name="compl_endereco" placeholder="bl 1 apto 2" value="<?php echo htmlspecialchars( $company["compl_endereco"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="email_contato">E-mail</label>
+                    <input type="email" class="form-control" id="compl_endereco" name="compl_endereco" placeholder="falecom@berinc.com.br" value="<?php echo htmlspecialchars( $company["compl_endereco"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="site">Site</label>
+                    <input type="url" class="form-control" id="site" name="site" placeholder="http://www.berinc.com.br" value="<?php echo htmlspecialchars( $company["site"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="facebook">Facebook</label>
+                    <input type="url" class="form-control" id="facebook" name="facebook" placeholder="http://www.facebook.com/berinc" value="<?php echo htmlspecialchars( $company["facebook"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>                  
+                  <div class="col-sm-4">
+                    <label for="twitter">Twitter</label>
+                    <input type="text" class="form-control" id="twitter" name="twitter" placeholder="@berinc" value="<?php echo htmlspecialchars( $company["twitter"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="number" class="form-control" id="whatsapp" name="whatsapp" placeholder="659863354" value="<?php echo htmlspecialchars( $company["whatsapp"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="inscr_municipal">IM</label>
-                  <input type="number" class="form-control" id="inscr_municipal" name="inscr_municipal" placeholder="659863354" value="<?php echo htmlspecialchars( $company["inscr_municipal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                </div>
-                <div class="form-group">
-                  <label for="site">Site</label>
-                  <input type="text" class="form-control" id="site" name="site" placeholder="http://www.berinc.com.br" value="<?php echo htmlspecialchars( $company["site"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                  <label for="descr_empresa">Descrição</label>
+                  <textarea class="form-control" id="descr_empresa" name="descr_empresa" placeholder="Somos uma empresa de tecnológia" value="<?php echo htmlspecialchars( $company["descr_empresa"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Logo</label>
