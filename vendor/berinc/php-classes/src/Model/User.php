@@ -136,7 +136,8 @@ class User extends Model{
             :despassword,
             :desemail,
             :nrphone,
-            :inadmin
+            :inadmin,
+            :foto
             )",
             array(
                 ":desperson" => utf8_decode($this->getdesperson()),
@@ -144,7 +145,8 @@ class User extends Model{
                 ":despassword" => User::getPasswordHash($this->getdespassword()),
                 ":desemail" => $this->getdesemail(),
                 ":nrphone" => $this->getnrphone(),
-                ":inadmin" => $this->getinadmin()
+                ":inadmin" => $this->getinadmin(),
+                ":foto" => $this->getfoto()
             )
       );
 
@@ -181,7 +183,8 @@ class User extends Model{
               :despassword,
               :desemail,
               :nrphone,
-              :inadmin
+              :inadmin,
+              :foto
               )",
               array(
                   ":iduser" => $this->getiduser(),
@@ -190,7 +193,8 @@ class User extends Model{
                   ":despassword" => User::getPasswordHash($this->getdespassword()),
                   ":desemail" => $this->getdesemail(),
                   ":nrphone" => $this->getnrphone(),
-                  ":inadmin" => $this->getinadmin()
+                  ":inadmin" => $this->getinadmin(),
+                  ":foto" => $this->getfoto()
               )
         );
 
@@ -491,7 +495,13 @@ class User extends Model{
               'total' => (int)$resultTotal[0]["nrtotal"],
               'pages' => ceil($resultTotal[0]["nrtotal"] / $itemsPerPage) // ceil arredonda para cima
           );
-      }
+    }
+
+    public function setPhoto($file){
+        $base64 = getImgBase64($file, 'foto' . $this->getiduser());
+        $this->setfoto($base64);
+
+    }
 
 }
 

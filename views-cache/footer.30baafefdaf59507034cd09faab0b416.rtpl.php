@@ -9,6 +9,7 @@
                         <div class="footer-social">
                             <a href=<?php echo getFieldCompany("facebook"); ?> target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href=<?php echo getFieldCompany("twitter"); ?> target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href=<?php echo getFieldCompany("instagram"); ?> target="_blank"><i class="fa fa-instagram"></i></a>
                           <!--  <a href="https://www.youtube.com/channel/UCjWENuSH2gX55-y7QSZiWxA" target="_blank"><i class="fa fa-youtube"></i></a>-->
                         </div>
                     </div>
@@ -56,7 +57,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2017 berinc. <a href="http://www.berinc.com.br" target="_blank">berinc.com.br</a></p>
+                        <p>&copy; 2018 berinc. <a href="http://www.berinc.com.br" target="_blank">berinc.com.br</a></p>
                     </div>
                 </div>
 

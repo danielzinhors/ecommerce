@@ -115,7 +115,8 @@ function getImgBase64($file, $pid ){
 function getFieldCompany($campo){
   
 	$company = new Company();
-    $company->get((int)ID_PARAMS_EMPRESA_PADRAO);
+	$company->get((int)ID_PARAMS_EMPRESA_PADRAO);
+	
 	return $company->getField($campo);
 
 }

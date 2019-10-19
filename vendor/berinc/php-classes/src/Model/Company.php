@@ -40,7 +40,8 @@ class Company extends Model{
                 :twitter,
                 :whatsapp,
                 :descr_empresa,
-                :logo)",
+                :logo,
+                :instagram)",
                 array(
                     ":idparamsempresa" => $this->getidparamsempresa(),
                     ":razao_social" => $this->getrazao_social(),
@@ -58,7 +59,8 @@ class Company extends Model{
                     ':twitter' => $this->gettwitter(),
                     ':whatsapp' => $this->getwhatsapp(),
                     ':descr_empresa' => $this->getdescr_empresa(),
-                    ":logo" => $this->getlogo()
+                    ":logo" => $this->getlogo(),
+                    ":instagram" => $this->getinstagram()
                 )
             );
 
@@ -198,6 +200,9 @@ class Company extends Model{
               break;
             case "compl_endereco": 
               $campo = $this->getcompl_endereco();
+              break;
+            case "instagram": 
+              $campo = $this->getinstagram();
               break;
         }
         return $campo;

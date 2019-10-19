@@ -128,6 +128,9 @@ $app->post('/admin/users/create', function(){
 		$user = new User();
 		$_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 		$user->setData($_POST);
+		if ((int)$_FILES["foto"]["size"] > 0) {
+			$user->setPhoto($_FILES["foto"]);
+		}
 		$user->save();
 
 		header("Location: /admin/users");
@@ -142,6 +145,9 @@ $app->post('/admin/users/:iduser', function($iduser){
 	    $_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 		$user->get((int)$iduser);
 		$user->setData($_POST);
+		if ((int)$_FILES["foto"]["size"] > 0) {
+			$user->setPhoto($_FILES["foto"]);
+		}
 		$user->update();
 
 		header("Location: /admin/users");
