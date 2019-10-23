@@ -17,7 +17,7 @@ class User extends Model{
     const MSG_SUCCESS = 'UserSuccess';
 
     protected $fields = [
-      "iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
+      "iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister", "foto"
     ];
 
     public static function getFromSession(){
@@ -174,13 +174,12 @@ class User extends Model{
 
     public function update(){
         $sql = new Sql();
-
+        //":despassword" => User::getPasswordHash($this->getdespassword()),
         $results = $sql->select(
             "CALL sp_usersupdate_save(
               :iduser,
               :desperson,
               :deslogin,
-              :despassword,
               :desemail,
               :nrphone,
               :inadmin,
@@ -189,8 +188,7 @@ class User extends Model{
               array(
                   ":iduser" => $this->getiduser(),
                   ":desperson" => utf8_decode($this->getdesperson()),
-                  ":deslogin" => $this->getdeslogin(),
-                  ":despassword" => User::getPasswordHash($this->getdespassword()),
+                  ":deslogin" => $this->getdeslogin(),                  
                   ":desemail" => $this->getdesemail(),
                   ":nrphone" => $this->getnrphone(),
                   ":inadmin" => $this->getinadmin(),
@@ -502,6 +500,40 @@ class User extends Model{
         $this->setfoto($base64);
 
     }
+
+    public function getField($campo){
+      switch ($campo) {
+          case "foto": 
+            $campo = $this->getfoto();
+            break;
+          case "inadmin": 
+            $campo = $this->getinadmin();
+            break;
+          case "iduser": 
+            $campo = $this->getiduser();
+            break;
+          case "idperson": 
+            $campo = $this->getidperson();
+            break;
+          case "deslogin": 
+            $campo = $this->getdeslogin();
+            break;
+          case "dtregister": 
+            $campo = $this->getdtregister();
+            break;
+          case "desenail": 
+            $campo = $this->getdesenail();
+            break;
+          case "nrphone": 
+            $campo = $this->getnrphone();
+            break;
+          case "desperson": 
+            $campo = $this->getdesperson();
+            break;
+      }
+      
+      return $campo;
+  }
 
 }
 

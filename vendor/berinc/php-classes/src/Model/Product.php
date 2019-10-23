@@ -73,7 +73,11 @@ class Product extends Model{
     				:vllength,
     				:vlweight,
             :desurl,
-            :in_slider)",
+            :in_slider,
+            :imagem_principal,
+            :descr_produto,
+            :imagem_2,
+            :imagem_3)",
     				array(
     					":idproduct" => $this->getidproduct(),
     					":desproduct" => $this->getdesproduct(),
@@ -83,7 +87,11 @@ class Product extends Model{
     					":vllength" => $this->getvllength(),
     					":vlweight" => $this->getvlweight(),
               ":desurl" => $this->getdesurl(),
-              ":in_slider" => $this->getin_slider()
+              ":in_slider" => $this->getin_slider(),
+              ":imagem_principal" => $this->getimagem_principal(),
+              ":descr_produto" => $this->getdescr_produto(),              
+              ":imagem_2" => $this->getimagem_2(),
+              ":imagem_3" => $this->getimagem_3()
     				)
     			);
 
@@ -126,13 +134,13 @@ class Product extends Model{
 	  }
 
     public function getValues(){
-    		    $this->checkPhoto();
+    		  //  $this->checkPhoto();
     		    $values = parent::getValues();
     		    return $values;
     }
 
 
-    public function setPhoto($file){
+   /* public function setPhoto($file){
 
         		$extension = explode('.', $file['name']);
         		$extension = end($extension);
@@ -167,7 +175,19 @@ class Product extends Model{
 
         		$this->checkPhoto();
 
-	}
+  }*/
+  
+  public function setPhoto($file, $numImagem = 1){
+      $base64 = getImgBase64($file, 'fotoprod' . $this->getiproduct() . $numImagem);
+      if ($numImagem === 1){
+        $this->setimagem_principal($base64);
+      }else if ($numImagem === 2){
+        $this->setimagem_2($base64);
+      }else{
+        $this->setimagem_3($base64);
+      }
+
+  }
 
   public function getFromURL($desurl){
 

@@ -59,7 +59,16 @@ $app->post('/admin/products/create', function(){
     $product = new Product();
     $_POST["in_slider"] = (isset($_POST["in_slider"]))? 'V' : 'F';
     //
-		$product->setData($_POST);
+    if ((int)$_FILES["file"]["size"] > 0) {
+      $product->setPhoto($_FILES["file"]);
+    }
+    if ((int)$_FILES["foto2"]["size"] > 0) {
+      $product->setPhoto($_FILES["foto2"], 2);
+    }
+    if ((int)$_FILES["foto3"]["size"] > 0) {
+      $product->setPhoto($_FILES["foto3"], 3);
+    }
+    $product->setData($_POST);
 		$product->save();
 
 		header("Location: /admin/products");
@@ -95,12 +104,18 @@ $app->post('/admin/products/:idproduct', function($idproduct){
 		$product = new Product();
     $product->get((int)$idproduct);
     $_POST["in_slider"] = (isset($_POST["in_slider"])) ? 'V' : 'F';
+    if ((int)$_FILES["file"]["size"] > 0) {
+      $product->setPhoto($_FILES["file"]);
+    }
+    if ((int)$_FILES["foto2"]["size"] > 0) {
+      $product->setPhoto($_FILES["foto2"], 2);
+    }
+    if ((int)$_FILES["foto3"]["size"] > 0) {
+      $product->setPhoto($_FILES["foto3"], 3);
+    }
     $product->setData($_POST);
     $product->save();
     
-    if ((int)$_FILES["file"]["size"] > 0) {
-        $product->setPhoto($_FILES["file"]);
-    }
 		header("Location: /admin/products");
 		exit;
 

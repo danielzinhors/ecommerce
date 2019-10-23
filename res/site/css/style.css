@@ -715,6 +715,10 @@ width: 10px;
   padding: 80px 0 130px;
 }
 
+div.box {
+    width: 150px;
+	display: inline-block;
+}
 
 
 .sidebar-title {
@@ -779,6 +783,9 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #e67e22
 }
 .product-breadcroumb {
     margin-bottom: 20px;
+}
+.product-breadcroumb a {
+    color: #000000;
 }
 .product-breadcroumb > a {
     margin-right: 31px;

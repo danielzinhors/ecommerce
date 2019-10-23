@@ -6,7 +6,7 @@
 					<?php $counter1=-1;  if( isset($productsslider) && ( is_array($productsslider) || $productsslider instanceof Traversable ) && sizeof($productsslider) ) foreach( $productsslider as $key1 => $value1 ){ $counter1++; ?>
 
 					<li>
-                        <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Slide" ></a>
+                        <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><img src="<?php echo htmlspecialchars( $value1["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Slide" ></a>
                         <div class="caption-group">
                             <h2 class="caption title">
                                 <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><span class="primary"><strong><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong></span></a>
@@ -68,7 +68,7 @@
 
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+                                <img src="<?php echo htmlspecialchars( $value1["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                                 <div class="product-hover">
                                     <a href="/cart/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/add" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Comprar</a>
                                     <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="view-details-link"><i class="fa fa-link"></i> Ver Detalhes</a>

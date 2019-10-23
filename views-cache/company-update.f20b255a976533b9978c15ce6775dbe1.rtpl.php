@@ -91,9 +91,9 @@
                     <input type="url" class="form-control" id="instagram" name="instagram" placeholder="https://www.instagram.com/berinc/" value="<?php echo htmlspecialchars( $company["instagram"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                   </div>                  
                 </div>
-                <div class="form-group">
+                <div class="form-group"> 
                   <label for="descr_empresa">Descrição</label>
-                  <textarea class="form-control" id="descr_empresa" name="descr_empresa" placeholder="Somos uma empresa de tecnológia" value="<?php echo htmlspecialchars( $company["descr_empresa"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></textarea>
+                  <input type="text" class="form-control" id="descr_empresa" name="descr_empresa" placeholder="Somos uma empresa de tecnológia" value="<?php echo htmlspecialchars( $company["descr_empresa"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></input>
                 </div>
                 <div class="form-group">
                     <label for="file">Logo</label>

@@ -5,7 +5,7 @@
 				<ul class="" id="bxslider-home4">
 					{loop="$productsslider"}
 					<li>
-                        <a href="/products/{$value.desurl}"><img src="{$value.desphoto}" alt="Slide" ></a>
+                        <a href="/products/{$value.desurl}"><img src="{$value.imagem_principal}" alt="Slide" ></a>
                         <div class="caption-group">
                             <h2 class="caption title">
                                 <a href="/products/{$value.desurl}"><span class="primary"><strong>{$value.desproduct}</strong></span></a>
@@ -65,7 +65,7 @@
                         {loop="$products"}
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="{$value.desphoto}" alt="">
+                                <img src="{$value.imagem_principal}" alt="">
                                 <div class="product-hover">
                                     <a href="/cart/{$value.idproduct}/add" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Comprar</a>
                                     <a href="/products/{$value.desurl}" class="view-details-link"><i class="fa fa-link"></i> Ver Detalhes</a>

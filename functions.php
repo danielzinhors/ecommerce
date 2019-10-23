@@ -65,6 +65,13 @@ function getUserName(){
 	return $user->getdesperson();
 }
 
+function getUserField($field){
+
+	$user = User::getFromSession();
+	
+	return $user->getField($field);
+}
+
 function getCartNrQtd(){
 
 	$cart = Cart::getFromSession();
