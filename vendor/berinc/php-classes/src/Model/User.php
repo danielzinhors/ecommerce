@@ -234,7 +234,8 @@ class User extends Model{
                    ":desip" => $_SERVER["REMOTE_ADDR"]
                  )
               );
-
+              $site = getFieldCompany('site');
+              $nomeFantasia = getFieldCompany('nome_fantasia');
               if (count($results2) === 0){
                   throw new \Exception("Não foi possível recuperar a senha.");
               }else{
@@ -249,15 +250,16 @@ class User extends Model{
 
                  $code = base64_encode($openssl);
                  if ($inadmin === true) {
-          					$link = "http://www.bericomerce.com.br/admin/forgot/reset?code=$code";
+          					$link = $site . "/admin/forgot/reset?code=$code";
           			 } else {
-          					$link = "http://www.bericomerce.com.br/forgot/reset?code=$code";
+          					$link = $site . "/forgot/reset?code=$code";
           			 }
-
+                 $idemp = ID_PARAMS_EMPRESA_PADRAO;
                  $email = $sql->select(
                        "SELECT b.*
                        from tb_params_empresa a
-                       INNER JOIN tb_conta_email b USING(idcontaemail)"
+                       INNER JOIN tb_conta_email b USING(idcontaemail)
+                       where idparamsempresa= $idemp"
 
                  );
                  //
@@ -265,18 +267,20 @@ class User extends Model{
                  $mailer = new Mailer(
                    $data["desemail"],
                    $data["desperson"],
-                   "Redefinir a senha de acesso da BeriComerce",
+                   "Redefinir a senha de acesso da " . $nomeFantasia,
                    "forgot",
                    array(
                      "name" => $data["desperson"],
-                     "link" => $link
+                     "link" => $link,
+                     "linkass" => "https://www.filepicker.io/api/file/2R9HpqboTPaB4NyF35xt",
+                     "nomefantasia" => $nomeFantasia
                    ),
                    array(
                      "username" => $emailConta["desusername"],
                      "senha" => $emailConta["dessenha"],
                      "host" => $emailConta["desprovedor"],
                      "porta" => $emailConta["nrporta"],
-                     "remetente" => 'BeriComerce',
+                     "remetente" => $nomeFantasia,
                      "assunto" => 'Recuperação de senha'
                    )
                  );

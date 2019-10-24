@@ -384,7 +384,8 @@
           <div class="content">
             <span class="brand">
               <a href="#">
-                berinc Store
+                <?php echo htmlspecialchars( $nomefantasia, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
               </a>
             </span>
           </div>
@@ -429,7 +430,7 @@
                           <tr>
                             <td class="body-signature-cell">
                               <p>Obrigado!</p>
-                              <p class="body-signature"><img src="https://www.filepicker.io/api/file/2R9HpqboTPaB4NyF35xt" alt="Company Name"></p>
+                              <p class="body-signature"><img src="<?php echo htmlspecialchars( $linkass, ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Company Name"></p>
                             </td>
                           </tr>
                         </table>

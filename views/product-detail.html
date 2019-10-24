@@ -24,17 +24,17 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="{$product.imagem_principal}">
+                                    <img id="image-preview" src="{$product.imagem_principal}">
                                 </div>
                             </div>
                             <div class="box">
-                                <img src="{$product.imagem_principal}"/>
+                                <img id="foto_principal" src="{$product.imagem_principal}"/>
                             </div>
                             <div class="box">
-                                <img src="{$product.imagem_2}"/>
+                                <img id="foto2" src="{$product.imagem_2}"/>
                             </div>
                             <div class="box">
-                                <img src="{$product.imagem_3}"/>
+                                <img id="foto3" src="{$product.imagem_3}"/>
                             </div>
                         </div>
 
@@ -98,3 +98,20 @@
         </div>
     </div>
 </div>
+<script> 
+    document.querySelector('#foto_principal').addEventListener('click', function(){
+    
+        document.querySelector('#image-preview').src = "{$product.imagem_principal}";
+    
+    });
+    document.querySelector('#foto2').addEventListener('click', function(){
+
+        document.querySelector('#image-preview').src = "{$product.imagem_2}";
+    
+    });
+    document.querySelector('#foto3').addEventListener('click', function(){
+    
+      document.querySelector('#image-preview').src = "{$product.imagem_3}";
+    
+    });
+</script>

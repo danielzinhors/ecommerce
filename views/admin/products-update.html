@@ -103,7 +103,7 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script>
+<script> 
 document.querySelector('#file').addEventListener('change', function(){
 
   var file = new FileReader();

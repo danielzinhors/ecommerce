@@ -24,17 +24,17 @@
                         <div class="col-sm-6">
                             <div class="product-images">
                                 <div class="product-main-img">
-                                    <img src="<?php echo htmlspecialchars( $product["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                    <img id="image-preview" src="<?php echo htmlspecialchars( $product["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 </div>
                             </div>
                             <div class="box">
-                                <img src="<?php echo htmlspecialchars( $product["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
+                                <img id="foto_principal" src="<?php echo htmlspecialchars( $product["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
                             </div>
                             <div class="box">
-                                <img src="<?php echo htmlspecialchars( $product["imagem_2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
+                                <img id="foto2" src="<?php echo htmlspecialchars( $product["imagem_2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
                             </div>
                             <div class="box">
-                                <img src="<?php echo htmlspecialchars( $product["imagem_3"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
+                                <img id="foto3" src="<?php echo htmlspecialchars( $product["imagem_3"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"/>
                             </div>
                         </div>
 
@@ -98,3 +98,20 @@
         </div>
     </div>
 </div>
+<script> 
+    document.querySelector('#foto_principal').addEventListener('click', function(){
+    
+        document.querySelector('#image-preview').src = "<?php echo htmlspecialchars( $product["imagem_principal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>";
+    
+    });
+    document.querySelector('#foto2').addEventListener('click', function(){
+
+        document.querySelector('#image-preview').src = "<?php echo htmlspecialchars( $product["imagem_2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>";
+    
+    });
+    document.querySelector('#foto3').addEventListener('click', function(){
+    
+      document.querySelector('#image-preview').src = "<?php echo htmlspecialchars( $product["imagem_3"], ENT_COMPAT, 'UTF-8', FALSE ); ?>";
+    
+    });
+</script>
