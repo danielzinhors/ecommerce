@@ -168,14 +168,14 @@ class Cart extends Model{
 
         $rows = $sql->select(
           "SELECT b.idproduct, b.desproduct, b.vlprice, b.vlwidth,
-	           b.vlheight, b.vllength, b.vlweight, b.desurl,
+	           b.vlheight, b.vllength, b.vlweight, b.desurl, b.imagem_principal,
              COUNT(*) AS nrqtd, SUM(b.vlprice) AS vltotal
           FROM tb_cartsproducts a
           INNER JOIN tb_products b ON b.idproduct = a.idproduct
           WHERE a.idcart = :idcart
           AND a.dtremoved IS NULL
           GROUP BY b.idproduct, b.desproduct, b.vlprice, b.vlwidth,
-             b.vlheight, b.vllength, b.vlweight, b.desurl
+             b.vlheight, b.vllength, b.vlweight, b.desurl, b.imagem_principal
           ORDER BY b.desproduct",
           array(
             ':idcart' => $this->getidcart()

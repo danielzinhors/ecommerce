@@ -2,12 +2,9 @@
 
 namespace Berinc\DB;
 
+use \Berinc\DB\Config;
+
 class Sql {
-	
-	const HOSTNAME = "127.0.0.1";
-	const USERNAME = "wordpress_user";
-	const PASSWORD = "Dadosbr@";
-	const DBNAME = "db_ecommerce";
 	
 
 	private $conn;
@@ -16,9 +13,9 @@ class Sql {
 	{
 
 		$this->conn = new \PDO(
-			"mysql:dbname=".Sql::DBNAME.";host=".Sql::HOSTNAME,
-			Sql::USERNAME,
-			Sql::PASSWORD
+			"mysql:dbname=".Config::DBNAME.";host=".Config::HOSTNAME,
+			Config::USERNAME,
+			Config::PASSWORD
 		);
 
 	}
