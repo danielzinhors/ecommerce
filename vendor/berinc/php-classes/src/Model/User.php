@@ -313,7 +313,7 @@ class User extends Model{
             INNER JOIN tb_persons c USING(idperson)
             WHERE a.idrecovery = :idrecovery
             AND a.dtrecovery IS NULL
-            AND DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();",
+            AND DATE_ADD(a.dtregister, INTERVAL 3 HOUR) >= NOW();",
             array(
               ":idrecovery" => $idrecovery
             ) );
