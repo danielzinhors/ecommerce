@@ -58,9 +58,9 @@ class Product extends Model{
         if(count($results) === 0){
             throw new \Exception("Categoria não encontrada");
         }else {
-          $results['desproduct'] = utf8_encode($results['desproduct']);
-          $results['desurl'] = utf8_encode($results['desurl']);
-          $results['descr_produto'] = utf8_encode($results['desperson']);
+          $results[0]['desproduct'] = utf8_encode($results[0]['desproduct']);
+          $results[0]['desurl'] = utf8_encode($results[0]['desurl']);
+          $results[0]['descr_produto'] = utf8_encode($results[0]['desperson']);
           $this->setData($results[0]);
         }
     }
