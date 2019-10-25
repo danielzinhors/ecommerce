@@ -6,8 +6,8 @@ use \Berinc\DB\Sql;
 use \Berinc\Model;
 
 class Category extends Model{
-
-    public static function listAll(){
+  
+  public static function listAll(){
 
       $sql = new Sql();
 
@@ -32,8 +32,9 @@ class Category extends Model{
         if(count($results) === 0){
             throw new \Exception("Categoria não encontrada");
         }else {
-          $results[0]['descategory'] = utf8_encode($results[0]['descategory']);
-          $this->setData($results[0]);
+          $data = $results[0];
+          $data['descategory'] = utf8_encode($data['descategory']);
+          $this->setData($data);
         }
     }
 
@@ -182,7 +183,13 @@ class Category extends Model{
         );
 
         $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
-
+           
+        foreach($results as &$row){
+          $row['descategory'] = utf8_encode($row['descategory']);
+          $p = new Category();          
+          $p->setData($row);
+          $row = $p->getValues();
+        }
         return array(
             'data' => $results,
             'total' => (int)$resultTotal[0]["nrtotal"],
@@ -207,7 +214,13 @@ class Category extends Model{
         );
 
         $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
-
+        
+        foreach($results as &$row){
+          $row['descategory'] = utf8_encode($row['descategory']);
+          $p = new Category();          
+          $p->setData($row);
+          $row = $p->getValues();
+        }
         return array(
             'data' => $results,
             'total' => (int)$resultTotal[0]["nrtotal"],

@@ -54,13 +54,19 @@ class Product extends Model{
                ":idproduct" => $idproduct
              )
         );
-
+       
         if(count($results) === 0){
             throw new \Exception("Categoria não encontrada");
         }else {
-          $results[0]['desproduct'] = utf8_encode($results[0]['desproduct']);
-          $results[0]['desurl'] = utf8_encode($results[0]['desurl']);
-          $results[0]['descr_produto'] = utf8_encode($results[0]['desperson']);
+          
+          foreach($results as &$row){
+            $row['desproduct'] = utf8_encode($row['desproduct']);
+            $row['desurl'] = utf8_encode($row['desurl']);
+            $row['descr_produto'] = utf8_encode($row['descr_produto']);
+            $p = new Product();          
+            $p->setData($row);
+            $row = $p->getValues();
+          }          
           $this->setData($results[0]);
         }
     }
@@ -243,7 +249,14 @@ class Product extends Model{
       );
 
       $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
-
+      foreach($results as &$row){
+        $row['desproduct'] = utf8_encode($row['desproduct']);
+        $row['desurl'] = utf8_encode($row['desurl']);
+        $row['descr_produto'] = utf8_encode($row['descr_produto']);
+        $p = new Product();          
+        $p->setData($row);
+        $row = $p->getValues();
+      }     
       return array(
           'data' => $results,
           'total' => (int)$resultTotal[0]["nrtotal"],
@@ -269,7 +282,14 @@ class Product extends Model{
       );
 
       $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
-
+      foreach($results as &$row){
+        $row['desproduct'] = utf8_encode($row['desproduct']);
+        $row['desurl'] = utf8_encode($row['desurl']);
+        $row['descr_produto'] = utf8_encode($row['descr_produto']);
+        $p = new Product();          
+        $p->setData($row);
+        $row = $p->getValues();
+      }     
       return array(
           'data' => $results,
           'total' => (int)$resultTotal[0]["nrtotal"],
