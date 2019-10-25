@@ -44,26 +44,26 @@ class Company extends Model{
                 :instagram)",
                 array(
                     ":idparamsempresa" => $this->getidparamsempresa(),
-                    ":razao_social" => $this->getrazao_social(),
-                    ":nome_fantasia" => $this->getnome_fantasia(),
+                    ":razao_social" => utf8_decode($this->getrazao_social()),
+                    ":nome_fantasia" => utf8_decode($this->getnome_fantasia()),
                     ":cnpj" => $this->getcnpj(),
-                    ":site" => $this->getsite(),
+                    ":site" => utf8_decode($this->getsite()),
                     ":idcontaemail" => $this->getidcontaemail(),
                     ":inscr_estadual" => $this->getinscr_estadual(),
                     ":inscr_municipal" => $this->getinscr_municipal(),
-                    ":endereco" => $this->getendereco(),
+                    ":endereco" => utf8_decode($this->getendereco()),
                     ':numero_endereco' => $this->getnumero_endereco(),
-                    ':compl_endereco' => $this->getcompl_endereco(),
-                    ':email_contato' => $this->getemail_contato(),
-                    ':facebook' => $this->getfacebook(),
-                    ':twitter' => $this->gettwitter(),
+                    ':compl_endereco' => utf8_decode($this->getcompl_endereco()),
+                    ':email_contato' => utf8_decode($this->getemail_contato()),
+                    ':facebook' => utf8_decode($this->getfacebook()),
+                    ':twitter' => utf8_decode($this->gettwitter()),
                     ':whatsapp' => $this->getwhatsapp(),
-                    ':descr_empresa' => $this->getdescr_empresa(),
+                    ':descr_empresa' => utf8_decode($this->getdescr_empresa()),
                     ":logo" => $this->getlogo(),
-                    ":instagram" => $this->getinstagram()
+                    ":instagram" => utf8_decode($this->getinstagram())
                 )
             );
-
+          
         $this->setData($results[0]);
 
     }
@@ -143,6 +143,16 @@ class Company extends Model{
         if(count($results) === 0){
             throw new \Exception("Empresa não encontrada");
         }else {
+          $results[0]['instagram'] = utf8_encode($results[0]['instagram']);
+          $results[0]['descr_empresa'] = utf8_encode($results[0]['descr_empresa']);
+          $results[0]['razao_social'] = utf8_encode($results[0]['razao_social']);
+          $results[0]['nome_fantasia'] = utf8_encode($results[0]['nome_fantasia']);
+          $results[0]['site'] = utf8_encode($results[0]['site']);
+          $results[0]['endereco'] = utf8_encode($results[0]['endereco']);
+          $results[0]['compl_endereco'] = utf8_encode($results[0]['compl_endereco']);
+          $results[0]['email_contato'] = utf8_encode($results[0]['email_contato']);
+          $results[0]['facebook'] = utf8_encode($results[0]['facebook']);
+          $results[0]['twitter'] = utf8_encode($results[0]['twitter']);           
           $this->setData($results[0]);
           
         }

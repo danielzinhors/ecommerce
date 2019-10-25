@@ -14,7 +14,8 @@ class Product extends Model{
       return $sql->select(
           "SELECT *
           FROM tb_products
-          order by desproduct"
+          WHERE active='V'
+          ORDER BY desproduct"
       );
     }
 
@@ -26,7 +27,8 @@ class Product extends Model{
           "SELECT *
           FROM tb_products
           WHERE in_slider='V'
-          order by desproduct"
+            AND active='V'
+          ORDER BY desproduct"
       );
     }
 
@@ -46,7 +48,8 @@ class Product extends Model{
         $results = $sql->select(
              "SELECT *
              FROM tb_products
-             WHERE idproduct = :idproduct",
+             WHERE idproduct = :idproduct
+             AND active='V'",
              array(
                ":idproduct" => $idproduct
              )
@@ -55,6 +58,9 @@ class Product extends Model{
         if(count($results) === 0){
             throw new \Exception("Categoria não encontrada");
         }else {
+          $results['desproduct'] = utf8_encode($results['desproduct']);
+          $results['desurl'] = utf8_encode($results['desurl']);
+          $results['descr_produto'] = utf8_encode($results['desperson']);
           $this->setData($results[0]);
         }
     }
@@ -80,16 +86,16 @@ class Product extends Model{
             :imagem_3)",
     				array(
     					":idproduct" => $this->getidproduct(),
-    					":desproduct" => $this->getdesproduct(),
+    					":desproduct" => utf8_decode($this->getdesproduct()),
     					":vlprice" => $this->getvlprice(),
     					":vlwidth" => $this->getvlwidth(),
     					":vlheight" => $this->getvlheight(),
     					":vllength" => $this->getvllength(),
     					":vlweight" => $this->getvlweight(),
-              ":desurl" => $this->getdesurl(),
+              ":desurl" => utf8_decode($this->getdesurl()),
               ":in_slider" => $this->getin_slider(),
               ":imagem_principal" => $this->getimagem_principal(),
-              ":descr_produto" => $this->getdescr_produto(),              
+              ":descr_produto" => utf8_decode($this->getdescr_produto()),              
               ":imagem_2" => $this->getimagem_2(),
               ":imagem_3" => $this->getimagem_3()
     				)
@@ -104,8 +110,8 @@ class Product extends Model{
           $sql = new Sql();
 
           $sql->query(
-            "DELETE
-            FROM tb_products
+            "UPDATE tb_products
+            SET active='F'
             WHERE idproduct = :idproduct",
             array(
               ":idproduct" => $this->getidproduct()
@@ -197,6 +203,7 @@ class Product extends Model{
         "SELECT *
         FROM tb_products
         WHERE desurl = :desurl
+        AND active='V'
         LIMIT 1",
         array(
           ':desurl' => $desurl
@@ -230,6 +237,7 @@ class Product extends Model{
       $results = $sql->select(
           "SELECT SQL_CALC_FOUND_ROWS *
           FROM tb_products
+          WHERE active='V'
           order by desproduct
           LIMIT $start, $itemsPerPage;"
       );
@@ -252,7 +260,8 @@ class Product extends Model{
           "SELECT SQL_CALC_FOUND_ROWS *
           FROM tb_products
           WHERE desproduct LIKE :search
-          order by desproduct
+          AND active='V'
+          ORDER BY desproduct
           LIMIT $start, $itemsPerPage;",
           array(
               ':search' => '%' . $search . '%'

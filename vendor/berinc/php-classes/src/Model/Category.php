@@ -32,6 +32,7 @@ class Category extends Model{
         if(count($results) === 0){
             throw new \Exception("Categoria não encontrada");
         }else {
+          $results[0]['descategory'] = utf8_encode($results[0]['descategory']);
           $this->setData($results[0]);
         }
     }
@@ -45,7 +46,7 @@ class Category extends Model{
             )",
             array(
                 ":idcategory" => $this->getidcategory(),
-                ":descategory" => $this->getdescategory()
+                ":descategory" => utf8_decode($this->getdescategory())
             )
       );
 
@@ -102,7 +103,8 @@ class Category extends Model{
                 SELECT a.idproduct
                 FROM tb_products a
                 INNER JOIN tb_productscategories b ON a.idproduct = b.idproduct
-                WHERE b.idcategory = :idcategory);",
+                WHERE b.idcategory = :idcategory)
+            AND active='V';",
                 array(
                   ':idcategory' => $this->getidcategory()
                 )
@@ -121,6 +123,7 @@ class Category extends Model{
             INNER JOIN tb_productscategories b ON a.idproduct = b.idproduct
             INNER JOIN tb_categories c ON c.idcategory = b.idcategory
             WHERE c.idcategory = :idcategory
+            AND active='V'
             LIMIT $start, $itemsPerPage;",
             array(
                ':idcategory' => $this->getidcategory()
