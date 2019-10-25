@@ -1,5 +1,5 @@
 
 # Default ignored files
 /workspace.xml
-../vendor/berinc/php-classes/src/DB/Config.php
+././vendor/berinc/php-classes/src/DB/Config.php
 ../views-cache/
