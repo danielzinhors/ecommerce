@@ -30,6 +30,8 @@ require_once("admin-products.php");
 require_once("admin-categories.php");
 require_once("admin-pedidos.php");
 require_once("admin-companys.php");
+require_once("admin-pais.php");
+require_once("admin-estado.php");
 
 $app->run();
 
